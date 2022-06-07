@@ -16,10 +16,17 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('gender');
+            $table->string('birthdate')->nullable();
+            $table->string('startingYear')->nullable();
+            $table->string('contactNo')->nullable();
+            $table->string('position');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->string('role')->nullable();
+            $table->enum('type',['Teacher', 'Principal']);
+            $table->enum('status',['Pending', 'Active', 'Deactivated'])->default('Pending');
+            $table->string('educattain')->nullable();           
             $table->timestamps();
         });
     }
