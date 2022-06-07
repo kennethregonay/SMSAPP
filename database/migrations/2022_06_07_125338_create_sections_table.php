@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('type',['Pilot','Regular']);
             $table->string('name');
             $table->string('glevel');
-            $table->foreignId('user_id')
+            $table->foreignId('users_id')
             ->constrained()
             ->onDelete('cascade')
             ->onUpdate('cascade');
