@@ -1,21 +1,18 @@
-@foreach ($items as $item)
-    {{-- Delete Confirmation --}}
-    <div class="modal" id="brigada_delete{{ $item->id }}">
+@foreach ($accounts as $acc)
+    <div class="modal" id="DeleteRequest{{ $acc->id }}">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title">Confirmation</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>         
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url ('brigada/delete')  }}" method="POST">
-                        @csrf
+                    <form action="{{ url('request/delete') }}" method="POST">
+                       @csrf
                         <div class="mb-2">
-                            <p>Are you sure you want to continue?</p>
-                           <input type="number" hidden name="num" value="{{ $item->id  }}">
+                            <p>Are you Sure you want to continue?</p>
+                            <input type="text" name="num" value="{{ $acc->id }} " hidden>
                         </div>
-
-                        <div class="modal-footer">
                             <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
                             <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         </div>
@@ -25,3 +22,4 @@
         </div>
     </div>
 @endforeach
+   

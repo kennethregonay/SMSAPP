@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title">Edit Donation</h2>
-                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ url('brigada/update') }}" method="POST">
@@ -13,24 +13,24 @@
                         <div class="mb-2">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name"
-                                value="{{ $item->name }}">
+                                value="{{ $item->Name }}">
                         </div>
 
                         <div class="mb-2">
                             <label for="donation">Donation</label>
-                            <input type="text" class="form-control" id="description" value="{{ $item->donation }}" name="donation"
+                            <input type="text" class="form-control" id="description" value="{{ $item->Donation }}" name="donation"
                                 placeholder="Enter donation">
                         </div>
 
                         <div class="mb-2">
                             <label for="amount">Amount</label>
                             <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter Name"
-                                value="{{ $item->amount }}">
+                                value="{{ $item->Amount }}">
                         </div>
 
                         <div class="mb-2">
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" value="{{ $item->date }}"
+                            <input type="date" class="form-control" id="date" value="{{ $item->Date }}"
                                 name="date">
                         </div>
 

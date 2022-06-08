@@ -7,8 +7,9 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-inline-flex">
-                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDonation"><span
-                            class="fa fa-plus"></span>Add Donation</a>
+                    {{-- Add Donation --}}
+                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brigada_add"><span
+                        class="fa fa-plus"></span>Add Donation</a>
                     <div>
                         <form action="">
                             <input type="text" placeholder="Search.." name="search">
@@ -46,17 +47,13 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td hidden>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->donation }}</td>
-                                <td>{{ $item->amount }}</td>
-                                <td>{{ $item->date }}</td>
+                                <td>{{ $item->Name }}</td>
+                                <td>{{ $item->Donation }}</td>
+                                <td>{{ $item->Amount }}</td>
+                                <td>{{ $item->Date }}</td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#brigada_edit{{ $item->id }}">Edit</button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#brigada_delete{{ $item->id }}">Delete</button>
-                                    </div>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#brigada_edit{{ $item->id }}">Edit</button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#brigada_delete{{ $item->id }}">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -66,7 +63,7 @@
         </div>
     </div>
 
-    @include('teacher.modals.addDonations')
-    @include('teacher.modals.deleteDonation')
-    @include('teacher.modals.editDonation')
+   @include('modals.addDonations')
+   @include('modals.deleteDonation')
+   @include('modals.editDonation')
 @endsection

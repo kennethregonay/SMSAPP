@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Learner;
-use App\Models\Parent;
 use App\Models\School;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Nullable;
@@ -67,8 +66,6 @@ class RegisterController extends Controller
         $parent = new Parent();
         $learner = new Learner();
 
-
-Learner
 
 
 

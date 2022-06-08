@@ -3,8 +3,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Edit Donation</h2>
-                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Edit Account</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ url('account/update') }}" method="POST">

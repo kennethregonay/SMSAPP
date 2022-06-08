@@ -19,13 +19,15 @@
                 <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="width: 50px;">
                 <a href="/" class="navbar-brand">Bula Central School</a>
             </div>
-            @auth
+            @guest
                 {{-- Index Navbar --}}
                 <ul class="nav navbar-nav narbar-right">
-                    <li><a href="#login" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal"><span
+                    <li><a href="#login" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal" id="loginBtn"><span
                                 class="fa fa-sign-in me-2"></span>Login</a></li>
                     <li><a href="#signup" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal"><span
                                 class="fa fa-user me-2"></span>Signup</a></li>
+                    <li><a href="#adminSignup" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal"><span
+                                class="fa fa-user me-2"></span>Admin Signup Temp</a></li>
                 </ul>
             @else
                 {{-- Dashboard Navbar --}}
@@ -43,7 +45,8 @@
                     </li>
                     </li>
                     <li class="nav-item"><a href="{{ url('brigada') }}" class="nav-link">Brigada</a></li>
-                    <li class="nav-item"><a href="{{ url('noticeboard') }}" class="nav-link">Notice Board</a></li>
+                    <li class="nav-item"><a href="{{ url('noticeboard') }}" class="nav-link">Notice Board</a>
+                    </li>
                     <li class="nav-item"><a href="{{ url('registerformlist') }}" class="nav-link">Register
                             Management</a>
                     </li>
@@ -64,7 +67,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                            {{-- {{ Auth()->user()->name }} --}}
+                            {{ Auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu" style="width: 100%">
                             <li class="dropdown-item"><a href="#" class="text-decoration-none text-black">Profile</a>
@@ -76,7 +79,7 @@
                         </ul>
                     </li>
                 </ul>
-            @endauth
+            @endguest
 
 
         </div>
@@ -98,13 +101,16 @@
                         <div class="mb-2">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Enter Email Address">
+                                value="{{ old('email') }}" placeholder="Enter Email Address">
                         </div>
                         <div class="mb-2">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password"
                                 placeholder="Enter Password">
                         </div>
+                        @error('invalid')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Login</button>
@@ -159,7 +165,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="gender">Gender</label>
-                                    <select name="gender" id="gender" class="form-control">
+                                    <select name="gender" id="gender" class="form-control form-select">
                                         <option selected hidden></option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -185,6 +191,53 @@
             </div>
         </div>
     </div>
+
+    <div class="modal" id="adminSignup">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Admin Signup</h2>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="{{ url('') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        @csrf
+                        <div class="mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="adminFullName">* Full Name</label>
+                                    <input type="text" class="form-control" id="adminFullName" name="adminFullname"
+                                        placeholder="Enter your Full Name">
+                                </div>
+                                <div class="col">
+                                    <label for="adminGender">Gender</label>
+                                    <select name="adminGender" id="adminGender" class="form-control form-select">
+                                        <option selected hidden></option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="adminEmail">*Email</label>
+                            <input type="adminEmail" class="form-control" id="adminEmail" name="adminEmail"
+                                placeholder="Enter Email Address">
+                        </div>
+                        <div class="mb-2">
+                            <label for="adminPassword">Password</label>
+                            <input type="adminPassword" class="form-control" id="adminPassword" name="adminPassword"
+                                placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Signup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
         function changefunc(value) {
             if (value == "Parent") {
@@ -195,11 +248,16 @@
         }
     </script>
 
-{{-- @if ($errors->any())
-{
-    <p>{{ $message }}</p>
-}
-@endif --}}
+    @if ($errors->has('invalid'))
+        <script>
+            document.getElementById('loginBtn').click();
+        </script>
+    @endif
+    @if(count($user)== 0)
+        <script>
+            document.getElementById('adminSignup').click()
+        </script>
+    @endif
 </body>
 
 

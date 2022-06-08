@@ -20,6 +20,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $announcement as $announce )
+                            
+                        @endforeach
                         <tr>
                             <td>Announcement Of Brigada</td>
                             <td>Start of Brigada is .......</td>
@@ -91,3 +94,4 @@
         </div>
     </div>
 @endsection
+{{  }}
