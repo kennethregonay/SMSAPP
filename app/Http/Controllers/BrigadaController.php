@@ -15,15 +15,19 @@ class BrigadaController extends Controller
     public function create (){
         $info = Request()->validate([
             'name' => 'required',
+            'donateType' => 'required',
             'donation' => 'required',
-            'amount' => 'required',
+            'quantity' => 'nullable',
+            'amount' => 'nullable',
             'date' => 'required',
         ]);
         
         $brigada = new Brigada();
 
         $brigada['name'] = $info['name'];
+        $brigada['donateType'] = $info['donateType'];
         $brigada['donation'] = $info['donation'];
+        $brigada['quantity'] = $info['quantity'];
         $brigada['amount'] = $info['amount'];
         $brigada['date'] = $info['date'];
         $brigada->save();
@@ -34,14 +38,20 @@ class BrigadaController extends Controller
         $request = Request()->all();
         $inputs = Request()->validate([
             'name' => 'required',
+            'donateType' => 'required',
             'donation' => 'required',
-            'amount' => 'required',
+            'quantity' => 'nullable',
+            'amount' => 'nullable',
             'date' => 'required',
         ]);
         $id = $request['num'];
         $record = Brigada::find($id);
+        
         $record['name'] = $inputs['name'];
+        $record['donateType'] = $inputs['donateType'];
         $record['donation'] = $inputs['donation'];
+        $record['quantity'] = $inputs['quantity'];
+        $record[''] = $inputs['quantity'];
         $record['amount'] = $inputs['amount'];
         $record['date'] = $inputs['date'];
         $record->save();

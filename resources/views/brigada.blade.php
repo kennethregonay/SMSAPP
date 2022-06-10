@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <br>
         <h3>Brigada Donations</h3>
         <hr style="height: 4px;color: rgb(0,0,0);">
@@ -36,8 +36,10 @@
                     <thead class="table-dark">
                         <tr>
                             <th hidden style="text-align: center;">ID</th>
-                            <th style="width: 30%">Name</th>
-                            <th style="width: 30%">Donation</th>
+                            <th style="width: 10%">Name</th>
+                            <th style="width: 10%">Type of Donation</th>
+                            <th style="width: 10%">Donation</th>
+                            <th style="width: 10%">Quantity</th>
                             <th style="width: 10%">Estimated Amount</th>
                             <th style="width: 10%">Date</th>
                             <th style="width: 10%">Action</th>
@@ -47,12 +49,14 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td hidden>{{ $item->id }}</td>
-                                <td>{{ $item->Name }}</td>
-                                <td>{{ $item->Donation }}</td>
-                                <td>{{ $item->Amount }}</td>
-                                <td>{{ $item->Date }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->donateType }}</td>
+                                <td>{{ $item->donation }}</td>
+                                <td>{{ $item->quantity }}</td>
+                                <td>{{ $item->amount }}</td>
+                                <td>{{ $item->date }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#brigada_edit{{ $item->id }}">Edit</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brigada_edit{{ $item->id }}">Edit</button>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#brigada_delete{{ $item->id }}">Delete</button>
                                 </td>
                             </tr>

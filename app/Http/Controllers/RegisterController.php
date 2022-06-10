@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guardian;
 use App\Models\Learner;
 use App\Models\School;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class RegisterController extends Controller
 
     public function register (){
         // dd(Request()->all());
-        $request = Request()->validate([
+     $request = Request()->validate([
             'ref_no' => 'required',
             'school_type' => 'required',
             'prev_grade' => 'required',
@@ -54,20 +55,66 @@ class RegisterController extends Controller
             'parents_lname' => 'required',
             'parents_contact' => 'required',
             'parents_email' => 'required',
-            'parents_educ-attain' => 'nullable',
+            'parents_educ-attain' => 'nullable'
         ]);
-        return view ('confirmation', ['request' => $request]);
+        return view ('confirmation',)->with('request' , $request);
     }
 
     // Digdi ma save
     public function confirmation()
     {
-        $school = new School();
-        $parent = new Parent();
+        $info = Request()->all();
+        $parent = new Guardian();
+        $parent['type'] = $info['p_type'];
+        $parent['fname'] = $info['p_fname'];
+        $parent['mname'] = $info['p_mname'];
+        $parent['lname'] = $info['p_lname'];
+        $parent['gender'] = $info['p_gender'];
+        $parent['email'] = $info['p_email'];
+        $parent['contactNo'] = $info['p_contact'];
+        $parent['educAttain'] = $info['p_educ-attain'];
+        $parent->save();
+
         $learner = new Learner();
+          
+        $learner['fname']  =  $info['l_fname'];
+        $learner['mname']  =  $info['l_mname'];
+        $learner['lname']  =  $info['l_lname'];
+        $learner['extension']  =  $info['l_extension'];
+        $learner['typelearners']  =  $info['l_type'];
+        $learner['glevel']  =  $info['l_glevel'];
+        $learner['LRN']  =  $info['l_lrn'];
+        $learner['contactNo']  =  $info['l_contact'];
+        $learner['email']  =  $info['l_email'];
+        $learner['gender']  =  $info['l_gender'];
+        $learner['birthdate']  =  $info['l_birthdate'];
+        $learner['religion']  =  $info['l_mothertongue'];
+        $learner['motherTongue']  =  $info['l_mothertongue'];
+        $learner['national']  =  $info['l_national'];
+        $learner['address']  =  $info['l_address'];
+        $learner['PWD']  =  $info['PWD'];
+        $learner['EnrollmentStatus']  =  'Incomplete';
+        $learner['RefNo']  =  $info['ref_no'];
+        $learner['guardians_id'] = $parent['id'];
+        $learner['GWA'] = $info['gwa'];
+        $learner->save();
+ 
+        $school = new School();
 
+        $school['type']= $info['s_type'];
+        $school['gradelevel']= $info['s_grade'];
+        $school['section']= $info['s_section'];
+        $school['schoolID']= $info['s_id'];
+        $school['name']= $info['s_name'];
+        $school['schoolyear']= $info['s_schoolyear'];
+        $school['address']= $info['s_address'];
+        $school['learner_id']=$learner['id'];
+        $school->save();
+        
+        session()->flash('registerSuccess', 'Registration Successful');
 
-
-
+        return redirect('/');
     }
 }
+
+

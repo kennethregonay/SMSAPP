@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SMS</title>
-
+    <script type="text/javascript" src="js/jquery.printPage.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
@@ -15,76 +15,76 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
-            <div class="navbar-header">
-                <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="width: 50px;">
-                <a href="/" class="navbar-brand">Bula Central School</a>
-            </div>
+
             @guest
+                <div class="navbar-header">
+                    <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="width: 50px;">
+                    <a href="{{ url('/') }}" class="navbar-brand">Bula Central School</a>
+                </div>
                 {{-- Index Navbar --}}
                 <ul class="nav navbar-nav narbar-right">
                     <li><a href="#login" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal" id="loginBtn"><span
                                 class="fa fa-sign-in me-2"></span>Login</a></li>
                     <li><a href="#signup" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal"><span
                                 class="fa fa-user me-2"></span>Signup</a></li>
-                    <li><a href="#adminSignup" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal"><span
-                                class="fa fa-user me-2"></span>Admin Signup Temp</a></li>
                 </ul>
             @else
+                <div class="navbar-header">
+                    <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="width: 50px;">
+                    <a href="{{ url('dashboard') }}" class="navbar-brand">Bula Central School</a>
+                </div>
                 {{-- Dashboard Navbar --}}
                 <ul class="nav navbar-nav me-auto">
-                    <li class="nav-item">
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">Section Management</a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="{{ url('section') }}"
-                                    class="text-decoration-none text-black">Sectioning</a></li>
-                            <li class="dropdown-item"><a href="{{ url('masterlist') }}"
-                                    class="text-decoration-none text-black">Master
-                                    List</a></li>
-                        </ul>
-                    </li>
-                    </li>
-                    <li class="nav-item"><a href="{{ url('brigada') }}" class="nav-link">Brigada</a></li>
-                    <li class="nav-item"><a href="{{ url('noticeboard') }}" class="nav-link">Notice Board</a>
-                    </li>
-                    <li class="nav-item"><a href="{{ url('registerformlist') }}" class="nav-link">Register
-                            Management</a>
-                    </li>
-                    <li class="nav-item">
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">Account Management</a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="{{ url('account') }}"
-                                    class="text-decoration-none text-black">Account</a>
+                    @if (Auth()->user()->type == 'Principal')
+                        <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item"><a href="{{ url('section') }}" class="nav-link">Sectioning</a>
+                        </li>
+                        <li class="nav-item"><a href="{{ url('noticeboard') }}" class="nav-link">Notice
+                                Board</a></li>
+                        <li class="nav-item">
+                        <li class="dropdown nav-item">
+                            <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">Account Management</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item"><a href="{{ url('account') }}"
+                                        class="text-decoration-none text-black">Account List</a>
+                                </li>
+                                <li class="dropdown-item"><a href="{{ url('request') }}"
+                                        class="text-decoration-none text-black">Request List</a>
+                                </li>
+                            </ul>
+                        </li>
+                        </li>
+                    @else
+                        <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item"><a href="{{ url('masterlist') }}" class="nav-link">Master
+                            List</a></li>
+                        @if (Auth()->user()->role == 'Brigada Coordinator')
+                            <li class="nav-item"><a href="{{ url('brigada') }}" class="nav-link">Brigada</a>
                             </li>
-                            <li class="dropdown-item"><a href="{{ url('request') }}"
-                                    class="text-decoration-none text-black">Request</a>
-                            </li>
-                        </ul>
-                    </li>
-                    </li>
+                        @elseif(Auth()->user()->role == 'Enrollment Officer')
+                            <li class="nav-item"><a href="{{ url('registrationManage') }}" class="nav-link">Register Management</a></li>
+                        @endif
+                    @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                            {{ Auth()->user()->name }}
+                            {{ Auth()->user()->name }} | {{ Auth()->user()->type }}
                         </a>
                         <ul class="dropdown-menu" style="width: 100%">
                             <li class="dropdown-item"><a href="#" class="text-decoration-none text-black">Profile</a>
                             </li>
-                            <form action="{{ url('user/logout') }}" method="POST">
-                                @csrf
-                                <input type="submit" value="Logout">
-                            </form>
+                            <li class="dropdown-item">
+                                <a href="{{ url('user/logout') }}" class="text-decoration-none text-black">Logout</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             @endguest
-
-
         </div>
     </nav>
-
 
     @yield('content')
 
@@ -109,6 +109,9 @@
                                 placeholder="Enter Password">
                         </div>
                         @error('invalid')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                        @error('unverified')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
@@ -136,10 +139,8 @@
                                 <div class="col">
                                     <label for="type">* Create as:</label>
                                     <select name="type" id="type" class="form-control form-select"
-                                        onchange="changefunc(this.value)">
-                                        <option selected hidden></option>
-                                        <option value="Teacher">Teacher</option>
-                                        <option value="Parent">Parent</option>
+                                        onclick="changefunc(this.value)" readonly>
+                                        <option selected value="Teacher">Teacher</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -161,11 +162,11 @@
                                 <div class="col">
                                     <label for="fullName">* Full Name</label>
                                     <input type="text" class="form-control" id="fullName" name="name"
-                                        placeholder="Enter your Full Name">
+                                        placeholder="Enter your Full Name" required>
                                 </div>
                                 <div class="col">
                                     <label for="gender">Gender</label>
-                                    <select name="gender" id="gender" class="form-control form-select">
+                                    <select name="gender" id="gender" class="form-control form-select" required>
                                         <option selected hidden></option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -176,12 +177,12 @@
                         <div class="mb-2">
                             <label for="email">*Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Enter Email Address">
+                                placeholder="Enter Email Address" required>
                         </div>
                         <div class="mb-2">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Password">
+                                placeholder="Password" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -192,55 +193,10 @@
         </div>
     </div>
 
-    <div class="modal" id="adminSignup">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title">Admin Signup</h2>
-                    <button class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <form action="{{ url('') }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        @csrf
-                        <div class="mb-2">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="adminFullName">* Full Name</label>
-                                    <input type="text" class="form-control" id="adminFullName" name="adminFullname"
-                                        placeholder="Enter your Full Name">
-                                </div>
-                                <div class="col">
-                                    <label for="adminGender">Gender</label>
-                                    <select name="adminGender" id="adminGender" class="form-control form-select">
-                                        <option selected hidden></option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label for="adminEmail">*Email</label>
-                            <input type="adminEmail" class="form-control" id="adminEmail" name="adminEmail"
-                                placeholder="Enter Email Address">
-                        </div>
-                        <div class="mb-2">
-                            <label for="adminPassword">Password</label>
-                            <input type="adminPassword" class="form-control" id="adminPassword" name="adminPassword"
-                                placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Signup</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    {{-- @include('modals.viewProfie') --}}
     <script>
         function changefunc(value) {
-            if (value == "Parent") {
+            if (value == "Principal") {
                 document.getElementById("position").disabled = true;
             } else {
                 document.getElementById("position").disabled = false;
@@ -248,14 +204,9 @@
         }
     </script>
 
-    @if ($errors->has('invalid'))
+    @if ($errors->has('invalid') || $errors->has('unverified'))
         <script>
             document.getElementById('loginBtn').click();
-        </script>
-    @endif
-    @if(count($user)== 0)
-        <script>
-            document.getElementById('adminSignup').click()
         </script>
     @endif
 </body>

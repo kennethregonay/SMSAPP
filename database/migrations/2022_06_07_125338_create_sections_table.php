@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->enum('type',['Pilot','Regular']);
-            $table->string('name');
-            $table->string('glevel');
+            $table->enum('type',['Pilot','Regular'])->nullable();
+            $table->string('name')->nullable();
+            $table->string('glevel')->nullable();
             $table->foreignId('users_id')
             ->constrained()
             ->onDelete('cascade')

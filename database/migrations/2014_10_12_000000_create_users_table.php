@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('gender', ['Male', 'Female']);
+            $table->enum('gender', ['Male', 'Female'])->nullable();
             $table->string('birthdate')->nullable();
             $table->string('startingYear')->nullable();
             $table->string('contactNo')->nullable();
-            $table->string('position');
+            $table->string('position')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role')->nullable();
+            $table->enum('role',['Brigada Coordinator', 'Enrollment Officer', 'LIS Coordinator'])->nullable();
             $table->enum('type',['Teacher', 'Principal']);
             $table->enum('status',['Pending', 'Active', 'Deactivated'])->default('Pending');
             $table->string('educattain')->nullable();           
@@ -41,3 +41,4 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+{{  }}{{  }}

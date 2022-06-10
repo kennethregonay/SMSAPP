@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('brigadas', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->string('Donation');
-            $table->string('Amount');
-            $table->date('Date');
+            $table->string('name');
+            $table->enum('donateType',['Monetary', 'In Kind']);
+            $table->string('donation');
+            $table->string('quantity');
+            $table->string('amount');
+            $table->date('date');
             $table->timestamps();
         });
     }

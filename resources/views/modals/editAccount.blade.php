@@ -17,14 +17,22 @@
 
                         <div class="mb-2">
                             <label for="type">TYPE </label>
-                                <input type="text" class="form-control" id="description" value="{{ $acc->type }}"
-                                    name="type" placeholder="Enter donation" readonly>
+                            <input type="text" class="form-control" id="description" value="{{ $acc->type }}"
+                                name="type" placeholder="Enter donation" readonly>
                         </div>
 
                         <div class="mb-2">
-                            <label for="Role">Role</label>
-                            <input type="text" class="form-control" id="amount" name="role" placeholder="Enter Name"
-                                value="{{ $acc->role }}">
+                            <label for="Role">ROLE</label>
+                            <select name="role" id="role" class="form-control form-select" required>
+                                <option selected hidden></option>
+                                @if ($acc->role == 'Brigada Coordinator')
+                                <option value="Brigada Coordinator" selected>Brigada Coordinator</option>
+                                <option value="Enrollment Officer">Enrollment Officer</option>                                   
+                                @else
+                                <option value="Brigada Coordinator" >Brigada Coordinator</option>
+                                <option value="Enrollment Officer" selected >Enrollment Officer</option>  
+                                @endif
+                            </select>
                         </div>
 
                         <div class="mb-2">

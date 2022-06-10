@@ -139,7 +139,7 @@
             {{-- With LRN --}}
             <div class="row">
                 <div class="col"><label class="form-label" style="margin-bottom: 10px;"><strong>General Weighted Average
-                            number</strong><br></label><input class="form-control" type="text" name="l_lrn"
+                            number</strong><br></label><input class="form-control" type="text" name="gwa"
                         value="{{ $request['gwa'] }}" readonly>
                 </div>
                 <div class="col"><label class="form-label" style="margin-bottom: 10px;"><strong>LRN

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-md mt-3 mb-3">
-        <h2>Registration Form</h2>
+        <h2>Pre-Registration Form</h2>
         <hr style="height: 4px;color: rgb(0,0,0);">
         <form action="{{ route('register') }}" method="POST">
             @csrf
@@ -9,94 +9,9 @@
             <label for="ref_no" class="form-label"><strong>REFERENCE NUMBER: </strong></label>
             <input class="mb-5" type="number" name='ref_no' value="{{ $ref_no }}" readonly>
             {{-- Grade Level --}}
+
             <div id="accordion">
                 <div class="card">
-                    <div class="card-header">
-                        <a class="btn" data-bs-toggle="collapse" href="#gradeInfo"
-                            style="font-size: 24px;font-weight: bold">
-                            <strong>Grade Level and School Information </strong><span class="fa fa-caret-down"></span>
-                        </a>
-                    </div>
-                    <div id="gradeInfo" class="collapse show" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            <div class="row">
-                                {{-- School Information --}}
-                                <div class="col">
-                                    <label class="form-label" style="margin-bottom: 10px;"><strong>School
-                                            Type</strong><br></label>
-                                    <div class="row" style="width: 212px;">
-                                        <div class="col">
-                                            <div class="form-check"><input class="form-check-input" type="radio"
-                                                    id="formCheck-9" name="school_type" value="Public"><label
-                                                    class="form-check-label" for="formCheck-1"
-                                                    oninput="getfunc(this.value)">Public</label>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-check"><input class="form-check-input" type="radio"
-                                                    id="formCheck-10" name="school_type" value="Private"><label
-                                                    class="form-check-label" for="formCheck-1">Private</label></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col"><label class="form-label"
-                                        style="margin-bottom: 10px;"><strong>Previous
-                                            Grade
-                                            Level</strong><br></label>
-
-                                    <select class="form-select" style="margin-bottom: 20px;" name="prev_grade">
-                                        <option selected hidden></option>
-                                        <option value="Kindergarten">Kindergarten</option>
-                                        <option value="Grade 1">Grade 1</option>
-                                        <option value="Grade 2">Grade 2</option>
-                                        <option value="Grade 3">Grade 3</option>
-                                        <option value="Grade 4">Grade 4</option>
-                                        <option value="Grade 5">Grade 5</option>
-                                        <option value="Grade 6">Grade 6</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group mb-3"><label class="form-label"
-                                            style="margin-bottom: 10px;"><strong>Previous
-                                                Section</strong><br></label>
-                                        <input class="form-control" type="text" style="margin-bottom: 20px;"
-                                            name="prev_section" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group mb-3"><label class="form-label"
-                                            style="margin-bottom: 10px;"><strong>School
-                                                ID</strong><br></label><input class="form-control" type="text"
-                                            name="school_id" style="margin-bottom: 20px;">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group mb-3"><label class="form-label"
-                                            style="margin-bottom: 10px;"><strong>School
-                                                Name</strong><br></label><input class="form-control" type="text"
-                                            name="school_name" style="margin-bottom: 20px;"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group mb-3"><label class="form-label"
-                                            style="margin-bottom: 10px;"><strong>School
-                                                Year</strong><br></label><input class="form-control" type="text"
-                                            name="prev_schoolyear" style="margin-bottom: 20px;"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group mb-3"><label class="form-label"
-                                            style="margin-bottom: 10px;"><strong>School
-                                                Address</strong><br></label><input class="form-control"
-                                            name="school_address" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="card-header">
                         <a class="btn" data-bs-toggle="collapse" href="#studentInfo"
                             style="font-size: 24px;font-weight: bold">
@@ -114,12 +29,13 @@
                                         <div class="row" style="width: 240px;">
                                             <div class="col">
                                                 <div class="form-check"><input class="form-check-input" type="radio"
-                                                        id="formCheck-1" name="type" value="Enrollee"><label
-                                                        class="form-check-label" for="formCheck-1">Enrollee</label></div>
+                                                        id="enrolleeType" name="type" value="Enrollee" required>
+                                                    <label class="form-check-label" for="formCheck-1">Enrollee</label>
+                                                </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check"><input class="form-check-input" type="radio"
-                                                        id="formCheck-2" name="type" value="Transferee"><label
+                                                        id="transfereeType" name="type" value="Transferee"><label
                                                         class="form-check-label" for="formCheck-1">Transferee</label></div>
                                             </div>
                                         </div>
@@ -189,7 +105,8 @@
                                     <div class="col"><label class="form-label"
                                             style="margin-bottom: 10px;"><strong>General Weigthed
                                                 Average</strong><br></label>
-                                        <input class="form-control" type="text" name="gwa">
+                                        <input class="form-control" type="text" name="gwa" min="60" max="100"
+                                            placeholder="60-100">
                                     </div>
 
                                     {{-- LRN Number --}}
@@ -253,8 +170,8 @@
                                         <div class="form-group mb-3"><label class="form-label"
                                                 style="margin-bottom: 10px;"><strong>Contact
                                                     Number</strong><br></label><input class="form-control" type="tel"
-                                                name="contact" style="margin-bottom: 20px;" placeholder="09" minlength="11"
-                                                maxlength="13">
+                                                name="contact" style="margin-bottom: 20px;" placeholder="09XXXXXXXX"
+                                                minlength="11" maxlength="11">
                                         </div>
                                     </div>
                                     {{-- Student Email Address --}}
@@ -271,14 +188,102 @@
                                     <div class="col">
                                         <div class="form-group mb-3"><label class="form-label"
                                                 style="margin-bottom: 10px;"><strong>If there is a disability please specify
-                                                    if not leave it blank</strong><br></label>
-                                            <textarea class="form-control" name="PWD"></textarea>
+                                                    if not leave it as is</strong><br></label>
+                                            <textarea class="form-control" name="PWD">N/A</textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="card-header">
+                        <a class="btn" data-bs-toggle="collapse" href="#gradeInfo"
+                            style="font-size: 24px;font-weight: bold">
+                            <strong>Grade Level and School Information </strong><span class="fa fa-caret-down"></span>
+                        </a>
+                    </div>
+                    <div id="gradeInfo" class="collapse hidden" data-bs-parent="#accordion">
+                        <div class="card-body">
+                            <div class="row">
+                                {{-- School Information --}}
+                                <div class="col">
+                                    <label class="form-label" style="margin-bottom: 10px;"><strong>School
+                                            Type</strong><br></label>
+                                    <div class="row" style="width: 212px;">
+                                        <div class="col">
+                                            <div class="form-check"><input class="form-check-input" type="radio"
+                                                    id="formCheck-9" name="school_type" value="Public"><label
+                                                    class="form-check-label" for="formCheck-1">Public</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-check"><input class="form-check-input" type="radio"
+                                                    id="formCheck-10" name="school_type" value="Private"><label
+                                                    class="form-check-label" for="formCheck-1">Private</label></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col"><label class="form-label"
+                                        style="margin-bottom: 10px;"><strong>Previous
+                                            Grade
+                                            Level</strong><br></label>
+
+                                    <select class="form-select" style="margin-bottom: 20px;" name="prev_grade"
+                                        id="prev_grade">
+                                        <option selected hidden></option>
+                                        <option value="Kindergarten">Kindergarten</option>
+                                        <option value="Grade 1">Grade 1</option>
+                                        <option value="Grade 2">Grade 2</option>
+                                        <option value="Grade 3">Grade 3</option>
+                                        <option value="Grade 4">Grade 4</option>
+                                        <option value="Grade 5">Grade 5</option>
+                                        <option value="Grade 6">Grade 6</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-3"><label class="form-label"
+                                            style="margin-bottom: 10px;"><strong>Previous
+                                                Section</strong><br></label>
+                                        <input class="form-control" type="text" style="margin-bottom: 20px;"
+                                            name="prev_section" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mb-3"><label class="form-label"
+                                            style="margin-bottom: 10px;"><strong>School
+                                                ID</strong><br></label><input class="form-control" type="text"
+                                            name="school_id" style="margin-bottom: 20px;">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-3"><label class="form-label"
+                                            style="margin-bottom: 10px;"><strong>School
+                                                Name</strong><br></label><input class="form-control" type="text"
+                                            name="school_name" style="margin-bottom: 20px;"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mb-3"><label class="form-label"
+                                            style="margin-bottom: 10px;"><strong>School
+                                                Year</strong><br></label><input class="form-control" type="text"
+                                            name="prev_schoolyear" style="margin-bottom: 20px;"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mb-3"><label class="form-label"
+                                            style="margin-bottom: 10px;"><strong>School
+                                                Address</strong><br></label><input class="form-control"
+                                            name="school_address" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="card-header">
                         <a class="btn" data-bs-toggle="collapse" href="#parentInfo"
@@ -352,20 +357,25 @@
                                         <div class="form-group mb-3"><label class="form-label"
                                                 style="margin-bottom: 10px;"><strong>Contact
                                                     Number</strong><br></label></div><input class="form-control"
-                                            type="tel" style="margin: 0px;margin-top: -16px;" name="parents_contact">
+                                            type="tel" style="margin: 0px;margin-top: -16px;" name="parents_contact" placeholder="09XXXXXXXXX">
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-3"><label class="form-label"
                                                 style="margin-bottom: 10px;"><strong>Email
                                                     Address</strong><br></label><input class="form-control" type="email"
-                                                name="parents_email">
+                                                name="parents_email" placeholder="example@gmail.com">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-3"><label class="form-label"
-                                                style="margin-bottom: 10px;"><strong>Educational
-                                                    Attainment</strong><br></label><input class="form-control"
-                                                type="text" name="parents_educ-attain">
+                                                style="margin-bottom: 10px;"><strong>Educational Attainment</strong><br></label>
+                                            <select class="form-control form-select" style="margin-bottom: 20px;" name="parents_educ-attain"
+                                                id="parents_educ-attain">
+                                                <option selected hidden></option>
+                                                <option value="Elementary Graduate">Elementary Graduate</option> 
+                                                <option value="Highschool Graduate">Highschool Graduate</option> 
+                                                <option value="College Graduate">College Graduate</option> 
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -381,4 +391,13 @@
             </div>
         </form>
     </div>
+    <script>
+        function changefunc(value) {
+            if (value == "Kindergarten") {
+                document.getElementById("fname").disabled = true;
+            } else {
+                document.getElementById("fname").disabled = false;
+            }
+        }
+    </script>
 @endsection

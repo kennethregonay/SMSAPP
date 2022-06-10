@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Announcement;
+use App\Models\Guardian;
+use App\Models\Learner;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,5 +23,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Guardian::factory(1)->create();
+        Learner::factory(10)->create();
     }
 }

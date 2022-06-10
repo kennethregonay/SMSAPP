@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Learner extends Model
 {
     use HasFactory;
+
+    public function guardian (){
+        $this->belongsTo(Learner::class);
+    }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     {{-- Account Management - Active Accounts --}}
-    <div class="container-fluid">
+    <div class="container">
         <br>
         <h3>Account Management</h3>
         <hr style="height: 4px;color: rgb(0,0,0);">
@@ -19,13 +19,13 @@
             <div class="card-body">
                 <table class="table table-resposive table-bordered">
                     <thead class="table-dark">
-                        <tr></tr>
-                        <th hidden style="text-align: center;">ID</th>
-                        <th style="width: 15%; text-align: center;">TYPE</th>
-                        <th style="width: 25%; text-align: center;">EMAIL</th>
-                        <th style="width: 15%; text-align: center;">ROLE</th>
-                        <th style="width: 15%; text-align: center;">STATUS</th>
-                        <th style="width: 15%; text-align: center;">ACTION</th>
+                        <tr>
+                            <th hidden style="text-align: center;">ID</th>
+                            <th style="width: 15%; text-align: center;">TYPE</th>
+                            <th style="width: 25%; text-align: center;">EMAIL</th>
+                            <th style="width: 15%; text-align: center;">ROLE</th>
+                            <th style="width: 15%; text-align: center;">STATUS</th>
+                            <th style="width: 15%; text-align: center;">ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,9 +38,11 @@
                                 <td style="text-align: center;">{{ $acc->status }}</td>
                                 <td style="text-align: center;">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewAccount{{ $acc->id }}"><span class="fa fa-eye"></span> View</button>
+                                        data-bs-target="#viewAccount{{ $acc->id }}"><span
+                                            class="fa fa-eye"></span> View</button>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#edit_account{{ $acc->id }}"><span class="fa fa-pencil"></span> Edit</button>
+                                        data-bs-target="#edit_account{{ $acc->id }}"><span
+                                            class="fa fa-pencil"></span> Edit</button>
                                 </td>
                             </tr>
                         @endforeach

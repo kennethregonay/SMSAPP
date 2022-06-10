@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <h3 class="mt-3">Request</h3>
         <hr style="height: 4px;color: rgb(0,0,0);">
         <div class="card">
@@ -14,11 +14,11 @@
                     <thead>
                         <tr>
                             <th hidden style="text-align: center;">ID</th>
-                            <th style="width: 15%; text-align: center;">TYPE</th>
+                            <th style="width: 10%; text-align: center;">TYPE</th>
                             <th style="width: 15%; text-align: center;">EMAIL</th>
                             <th style="width: 15%; text-align: center;">ROLE</th>
                             <th style="width: 15%; text-align: center;">STATUS</th>
-                            <th style="width: 20%; text-align: center;">ACTION</th>
+                            <th style="width: 25%; text-align: center;">ACTION</th>
                         </tr>
                     </thead>
                     <tbody>

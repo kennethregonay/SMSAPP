@@ -11,29 +11,47 @@
                         @csrf
                         <input type="number" name="num" hidden value="{{ $item->id }}">
                         <div class="mb-2">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name"
-                                value="{{ $item->Name }}">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        value="{{ $item->name }}">
+                                </div>
+                                <div class="col">
+                                    <label for="name">Type of Donation</label>
+                                    <select class="form-select" style="margin-bottom: 20px;" name="donateType">
+                                        <option selected hidden></option>
+                                        <option value="Monetary" selected="">Monetary</option>
+                                        <option value="In Kind">In Kind</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-2">
                             <label for="donation">Donation</label>
-                            <input type="text" class="form-control" id="description" value="{{ $item->Donation }}" name="donation"
-                                placeholder="Enter donation">
+                            <textarea class="form-control" id="donation" name="donation">{{ $item->donation }}</textarea>
                         </div>
 
                         <div class="mb-2">
-                            <label for="amount">Amount</label>
-                            <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter Name"
-                                value="{{ $item->Amount }}">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="amount">Quantity</label>
+                                    <input type="text" class="form-control" id="amount" name="quantity"
+                                    value="{{ $item->quantity }}">
+                                </div>
+                                <div class="col">
+                                    <label for="amount">Amount</label>
+                                    <input type="text" class="form-control" id="amount" name="amount"
+                                    value="{{ $item->amount }}">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-2">
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" value="{{ $item->Date }}"
-                                name="date">
+                            <input type="date" class="form-control" id="date" name="date" value="{{ $item->date }}>
                         </div>
-
                         <div class="modal-footer">
                             <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
                         </div>

@@ -18,33 +18,30 @@ return new class extends Migration
             $table->string('fname');
             $table->string('mname')->nullable();
             $table->string('lname');
-            $table->string('extension');
-            $table->string('typelearners');
-            $table->string('glevel');
+            $table->string('extension')->nullable();
+            $table->enum('typelearners',['Enrollee', 'Transferee']);
+            $table->enum('glevel', ['Kindergarten', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6']);
             $table->string('LRN')->nullable();
             $table->string('contactNo')->nullable();
-            $table->string('email')->nullable();
-            $table->string('gender');
+            $table->string('email')->nullable()->unique();
+            $table->enum('gender',['Male', 'Female']);
             $table->string('birthdate');
-            $table->string('religion');
+            $table->string('religion')->nullable();
             $table->string('motherTongue');
             $table->string('national')->nullable();
-            $table->string('indeginousPpl')->nullable();
             $table->string('address');
             $table->string('PWD')->nullable();
             $table->enum('EnrollmentStatus', ['Incomplete','Pre-Registered', 'Enrolled'])->default('Incomplete');
-            $table->bigInteger('RefNo')->nullable();
-            $table->foreignId('parent_id') ->constrained()->onDelete('cascade') ->onUpdate('cascade');
+            $table->bigInteger('RefNo')->nullable()->unique();
+            $table->string('GWA');
+            $table->string('guardians_id');
             $table->foreignId('section_id')->nullable()->constrained()->onDelete('cascade') ->onUpdate('cascade');
             $table->timestamps();
+
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+  
     public function down()
     {
         Schema::dropIfExists('learners');

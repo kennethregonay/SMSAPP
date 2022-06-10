@@ -12,7 +12,9 @@ use Psy\TabCompletion\Matcher\FunctionDefaultParametersMatcher;
 class UserController extends Controller
 {
     //
-
+    public function index(){
+        return view('index');
+    }
     // SIGN UP IS RUNNING
     public function create()
     {
@@ -44,8 +46,17 @@ class UserController extends Controller
             'password' => 'required|min:8|max:20',
         ]);
 
+        $user = User::where('email', '=', $request['email'])->whereNot('status', '=', 'Active')->get();
+
+        if(count($user) > 0)
+        {
+            throw ValidationException::withMessages(['unverified' => 'Your account is not yet verified.']);
+        }
+
         if (Auth()->attempt($request)) {
-            return redirect('dashboard')->with(['success' => 'Y']);
+            if (Auth()->user()->status == 'Active'){
+                return redirect('dashboard')->with(['success' => 'Login Success']);   
+            }
         }
         throw ValidationException::withMessages(['invalid' => 'Your login credentials could not be verified.']);
     }
@@ -111,7 +122,27 @@ class UserController extends Controller
     }
 
     public function initialize(){
-        $user = DB::table('users')->where('type', '=', 'Principal');
+        $user = DB::table('users')->where('type', '=', 'Principal')->get();
+        
         return view('index', ['user' => $user]);
+    }
+
+    public function adminCreation () {
+        $request = Request()->validate([
+           'adminFullname' => 'required',
+           'adminEmail' => 'required',
+           'adminPassword' => 'required',
+        ]);
+        $user = new User();
+        $user['name'] = $request['adminFullname'];
+        $user['email'] = $request['adminEmail'];
+        $user['password'] = bcrypt($request['adminPassword']);
+        $user['type'] = 'Principal';
+        $user ['status'] = 'Active';
+        $user->save();
+
+        return redirect('/');
+
+
     }
 }

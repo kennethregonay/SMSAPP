@@ -14,10 +14,9 @@
                             <p>Are you sure you want to continue?</p>
                            <input type="number" hidden name="num" value="{{ $item->id  }}">
                         </div>
-
                         <div class="modal-footer">
-                            <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
-                            <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-danger" type="submit" data-bs-dismiss="modal">Confirm</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </form>
                 </div>
