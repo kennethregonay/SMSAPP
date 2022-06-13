@@ -73,14 +73,17 @@ Route::post('noticeboard/delete', [AnnouncementController::class, 'delete']);
 Route::post('noticeboard/update', [AnnouncementController::class, 'update']);
 
 // Sectioning Functionalities
-Route::get('section',[SectioningController::class, 'index'] );
-Route::post('section/create',[SectioningController::class, 'create'] );
-Route::post('section/update',[SectioningController::class, 'update'] );
-Route::post('section/delete',[SectioningController::class, 'delete'] );
-Route::get('section/learners',[SectioningController::class, 'sectionLearners'] );
+
+Route::get('section', [SectioningController::class,'index']);
+
+// Route::get('section',[SectioningController::class, 'index'] );
+// Route::post('section/create',[SectioningController::class, 'create'] );
+// Route::post('section/update',[SectioningController::class, 'update'] );
+// Route::post('section/delete',[SectioningController::class, 'delete'] );
+// Route::get('section/learners',[SectioningController::class, 'sectionLearners'] );
 
 // Masterlist View Functionalities
-Route::get('masterlist',[MasterlistController::class, 'index'] );
+Route::get('masterlist',[MasterlistController::class, 'index']);
 
 // Register List Management View Functionalities
 Route::get('registrationManage',[RegistrationListController::class, 'index']);
