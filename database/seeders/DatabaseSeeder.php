@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Guardian::factory(1)->create();
-        Learner::factory(10)->create();
+        Learner::factory(100)->create();
     }
 }

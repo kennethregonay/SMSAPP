@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('national')->nullable();
             $table->string('address');
             $table->string('PWD')->nullable();
-            $table->enum('EnrollmentStatus', ['Incomplete','Pre-Registered', 'Enrolled'])->default('Incomplete');
+            $table->enum('EnrollmentStatus', ['Pre-Registered', 'Registered' , 'Unsettled'])->default('Pre-Registered');
             $table->bigInteger('RefNo')->nullable()->unique();
             $table->string('GWA');
             $table->string('guardians_id');

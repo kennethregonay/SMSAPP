@@ -13,12 +13,10 @@
                             <h4 class="text-primary card-title"><strong>PRE-REGISTERED STUDENT:</strong><br></h4>
                         </div>
                         @php
-                            $incStudent = DB::table('learners')
-                                ->where('EnrollmentStatus', '=', 'Incomplete')
-                                ->count();
+                            $incStudent = $learners->where('EnrollmentStatus', '=', 'Incomplete')->count();
                         @endphp
                         <div class="card-body">
-                            <h5 class="card-subtitle mb-2">{{  $incStudent }}</h5>
+                            <h5 class="card-subtitle mb-2">{{ $incStudent }}</h5>
                         </div>
                     </div>
                 </div>
@@ -28,9 +26,7 @@
                             <h4 class="text-primary card-title"><strong>REGISTERED STUDENT:</strong><br></h4>
                         </div>
                         @php
-                            $cStudent = DB::table('learners')
-                                ->where('EnrollmentStatus', '=', 'Enrolled')
-                                ->count();
+                            $cStudent = $learners->where('EnrollmentStatus', '=', 'Enrolled')->count();
                         @endphp
                         <div class="card-body">
                             <h5 class="card-subtitle mb-2">{{ $cStudent }}</h5>
@@ -43,9 +39,7 @@
                             <h4 class="text-primary card-title"><strong>TEACHER:</strong><br></h4>
                         </div>
                         @php
-                            $usercount = DB::table('users')
-                                ->where('type', '!=', 'Principal')
-                                ->count();
+                            $usercount = $users->where('type', '!=', 'Principal')->count();
                         @endphp
                         <div class="card-body">
                             <h5 class="card-subtitle mb-2">{{ $usercount }}</h5>
@@ -69,18 +63,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $announcements as $announce )
-                        <tr>
-                            <td>{{ $announce->title }}</td>
-                            <td>{{ $announce->desc }}</td>
-                            <td style="text-align: center;">{{ $announce->date }}</td>
-                        </tr>
-                            
+                        @foreach ($announcements as $announce)
+                            <tr>
+                                <td>{{ $announce->title }}</td>
+                                <td>{{ $announce->desc }}</td>
+                                <td style="text-align: center;">{{ $announce->date }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="col-sm-5">
+
                 @if (Auth()->user()->type == 'Principal')
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
@@ -88,21 +82,79 @@
                                 <th colspan="4" style="text-align: center">Pending Request</th>
                             </tr>
                             <tr style="background: rgb(209, 209, 209)">
-                                <th style="width: 15%; text-align: center;">TYPE</th>
-                                <th style="width: 15%; text-align: center;">EMAIL</th>
-                                <th style="width: 15%; text-align: center;">ROLE</th>
-                                <th style="width: 15%; text-align: center;">STATUS</th>
+                                <th style="text-align: center;">TYPE</th>
+                                <th style="text-align: center;">EMAIL</th>
+                                <th style="text-align: center;">STATUS</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="text-align: center;">Teacher</td>
-                                <td style="text-align: center;">example@gmail.com</td>
-                                <td style="text-align: center;"></td>
-                                <td style="text-align: center;">Pending</td>
-                            </tr>
+                            @php
+                                $pendingReq = $users->where('status', '=', 'Pending');
+                            @endphp
+                            @foreach ($pendingReq as $pending)
+                                <tr>
+                                    <td style="text-align: center;">{{ $pending->name }}</td>
+                                    <td style="text-align: center;">{{ $pending->email }}</td>
+                                    <td style="text-align: center;">{{ $pending->status }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                @elseif (Auth()->user()->type != 'Principal')
+                    @if (Auth()->user()->role == 'Brigada Coordinator')
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" style="text-align: center">Brigada Donations</th>
+                                </tr>
+                                <tr style="background: rgb(209, 209, 209)">
+                                    <th style="text-align: center;">NAME</th>
+                                    <th style="text-align: center;">DONATION</th>
+                                    <th style="text-align: center;">DATE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $items = $brigadas->where('status', '=', 'Pending');
+                                @endphp
+                                @foreach ($items as $items)
+                                    <tr>
+                                        <td style="text-align: center;">{{ $item->name }}</td>
+                                        <td style="text-align: center;">{{ $item->donation }}</td>
+                                        <td style="text-align: center;">{{ $item->date }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @elseif (Auth()->user()->role != 'Brigada Coordinator')
+                        @php
+                            $prereg = $learners->where('EnrollmentStatus', '=', 'Pre-Registered');
+                        @endphp
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" style="text-align: center">Pre-Registered Learners</th>
+                                </tr>
+                                <tr style="background: rgb(209, 209, 209)">
+                                    <th style="text-align: center;">NAME</th>
+                                    <th style="text-align: center;">GWA</th>
+                                    <th style="text-align: center;">STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $items = $brigadas->where('status', '=', 'Pending');
+                                @endphp
+                                @foreach ($prereg as $student)
+                                    <tr>
+                                        <td style="text-align: center;">{{ $student->fname }} {{ $student->mname }} {{ $student->lname }}</td>
+                                        <td style="text-align: center;">{{ $student->GWA }}</td>
+                                        <td style="text-align: center;">{{ $student->EnrollmentStatus }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 @endif
             </div>
         </div>

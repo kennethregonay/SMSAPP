@@ -18,7 +18,7 @@ class SectioningController extends Controller
         return view('section', ['sections' => $sections, 'learners' => $students  , 'teachers' => $teachers]);
     }
     public function create(){
-        // dd(request()->all());
+        dd(Request()->all());
 
         $request = request()->validate([
             'name' => 'required',
@@ -41,7 +41,7 @@ class SectioningController extends Controller
         return redirect('/');
     }
     public function sectionLearners(){
-        $students = Learner::all();
+        $students = Learner::where('EnrollmentStatus', '=' , 'Enrolled' )->get();
         $sections = Section::all();
 
         $types = [
@@ -95,6 +95,8 @@ class SectioningController extends Controller
         $sectionedStudents = collect([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
         $sectionKeys = collect([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
         $studentKeys = collect([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+        // Loop for Checking of Sections and Students
         for($i = 0;$i < 14;$i++){
             if(count($categorySection[$i]) != 0){
                 $sectionedStudents[$i] = $categoryStudent[$i]->splitIn(count($categorySection[$i]));
@@ -107,15 +109,23 @@ class SectioningController extends Controller
             }
         }
         
+        // Sectioning
+        
         for($i = 0;$i < 14;$i++){
             $pointer = 0;
 
+
             if(!is_null($sectionedStudents[$i])){
+
+
                 for($j = 0;$j < count($sectionedStudents[$i]);$j++){
+
+
                     foreach($sectionedStudents[$i][$j] as $student){
                         $key = $sectionKeys[$i][$pointer];
                         $student['section_id'] = $categorySection[$i][$key]->id;
                         $student->save();
+
                     }
                     $pointer++;
                 }

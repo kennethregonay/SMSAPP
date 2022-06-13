@@ -11,7 +11,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterlistController;
 use App\Http\Controllers\SectioningController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\DebugController;
 use App\Http\Controllers\RegistrationListController;
+use App\Models\Brigada;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -31,11 +33,13 @@ Route::get('dashboard', function(){
     $user = User::all();
     $announcement = Announcement::all();
     $learners = Learner::all();
+    $brigadas = Brigada::all();
     
     return view('dashboard', [
         'users' => $user,
         'announcements' => $announcement,
         'learners' => $learners,
+        'brigadas' => $brigadas,
     ]);
 });
 
@@ -74,11 +78,9 @@ Route::post('noticeboard/update', [AnnouncementController::class, 'update']);
 
 // Sectioning Functionalities
 
-Route::get('section', [SectioningController::class,'index']);
-
-// Route::get('section',[SectioningController::class, 'index'] );
+ Route::get('section', [SectioningController::class,'index']);
 // Route::post('section/create',[SectioningController::class, 'create'] );
-// Route::post('section/update',[SectioningController::class, 'update'] );
+ // Route::post('section/update',[SectioningController::class, 'update'] );
 // Route::post('section/delete',[SectioningController::class, 'delete'] );
 // Route::get('section/learners',[SectioningController::class, 'sectionLearners'] );
 
@@ -90,3 +92,6 @@ Route::get('registrationManage',[RegistrationListController::class, 'index']);
 Route::post('registration/accept',[RegistrationListController::class, 'approveLearners']);
 Route::post('registration/decline',[RegistrationListController::class, 'declineLearners']);
 
+
+// For Debug & Practice
+Route::get('section/debug', [DebugController::class, 'index']);

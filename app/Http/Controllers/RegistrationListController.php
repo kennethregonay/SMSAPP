@@ -14,7 +14,7 @@ class RegistrationListController extends Controller
      */
     public function index()
     {
-       $learners =  Learner::where('EnrollmentStatus', '=', 'Incomplete')->get();
+       $learners =  Learner::where('EnrollmentStatus', '=', 'Pre-Registered')->get();
        return view ('registerformlist', ['learners' => $learners]);
     }
 
@@ -22,7 +22,7 @@ class RegistrationListController extends Controller
         $request = Request()->all();
         $id = $request['num'];
         $learners = Learner::find($id);
-        $learners['EnrollmentStatus'] = 'Pre-Registered';
+        $learners['EnrollmentStatus'] = 'Registered';
         $learners->save();
         return back();
     }
@@ -30,7 +30,9 @@ class RegistrationListController extends Controller
     public function declineLearners(){
         $request = Request()->all();
         $id = $request['num'];
-         Learner::destroy($id);
+        $learners = Learner::find($id);
+        $learners['EnrollmentStatus'] = 'Unsettled';
+        $learners->save();
         return back();
     }
     }

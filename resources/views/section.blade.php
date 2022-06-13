@@ -6,12 +6,14 @@
         <div class="card">
             <div class="card-header d-flex">
                 <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add" id="addBtn"><span
-                class="fa fa-plus"></span>Add Section
+                        class="fa fa-plus"></span>Add Section
                 </a>
-                 <a class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#sectionLearners" id="sectionLearnersBtn">
+                <a class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#sectionLearners"
+                    id="sectionLearnersBtn">
                     Section Learners
-                </a> 
+                </a>
             </div>
+
 
             <div class="card-body">
                 <div id="accordion">
@@ -35,14 +37,14 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Kindergarten')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Kindergarten')->where('GWA', '<', '89'));
-                                            $SuggestedSections[0] =  ceil($pilots / 50);
-                                            $SuggestedSections[1] =  ceil($regs / 50);
+                                            $SuggestedSections[0] = ceil($pilots / 50);
+                                            $SuggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Kindergarten')) }}</td>
@@ -51,7 +53,7 @@
                                         <td>{{ $SuggestedSections[0] }}</td>
                                         <td>{{ $SuggestedSections[1] }}</td>
                                     </tr>
-                                    
+
                                 </table>
 
 
@@ -65,7 +67,7 @@
                                             <th style="width: 20%;">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody></tbody>
                                         @foreach ($sections as $section)
                                             @if ($section->glevel == 'Kindergarten')
                                                 <tr>
@@ -106,14 +108,14 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 1')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 1')->where('GWA', '<', '89'));
-                                            $SuggestedSections[0] =  ceil($pilots / 50);
-                                            $SuggestedSections[1] =  ceil($regs / 50);
+                                            $SuggestedSections[0] = ceil($pilots / 50);
+                                            $SuggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 1')) }}</td>
@@ -122,7 +124,7 @@
                                         <td>{{ $SuggestedSections[0] }}</td>
                                         <td>{{ $SuggestedSections[1] }}</td>
                                     </tr>
-                                    
+
                                 </table>
                                 <table class="table table-resposive table-bordered">
                                     <thead class="table-dark">
@@ -164,7 +166,7 @@
                         </div>
                         <div id="grade2" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                            <table class="table table-striped">
+                                <table class="table table-striped">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th>No. of Students</th>
@@ -174,14 +176,14 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 2')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 2')->where('GWA', '<', '89'));
-                                            $SuggestedSections[0] =  ceil($pilots / 50);
-                                            $SuggestedSections[1] =  ceil($regs / 50);
+                                            $SuggestedSections[0] = ceil($pilots / 50);
+                                            $SuggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 2')) }}</td>
@@ -190,7 +192,7 @@
                                         <td>{{ $SuggestedSections[0] }}</td>
                                         <td>{{ $SuggestedSections[1] }}</td>
                                     </tr>
-                                    
+
                                 </table>
                                 <table class="table table-resposive table-bordered">
                                     <thead class="table-dark">
@@ -232,7 +234,7 @@
                         </div>
                         <div id="grade3" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                            <table class="table table-striped">
+                                <table class="table table-striped">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th>No. of Students</th>
@@ -242,14 +244,14 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 3')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 3')->where('GWA', '<', '89'));
-                                            $SuggestedSections[0] =  ceil($pilots / 50);
-                                            $SuggestedSections[1] =  ceil($regs / 50);
+                                            $SuggestedSections[0] = ceil($pilots / 50);
+                                            $SuggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 3')) }}</td>
@@ -258,7 +260,7 @@
                                         <td>{{ $SuggestedSections[0] }}</td>
                                         <td>{{ $SuggestedSections[1] }}</td>
                                     </tr>
-                                    
+
                                 </table>
                                 <table class="table table-resposive table-bordered">
                                     <thead class="table-dark">
@@ -299,7 +301,7 @@
                         </div>
                         <div id="grade4" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                            <table class="table table-striped">
+                                <table class="table table-striped">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th>No. of Students</th>
@@ -309,14 +311,14 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 4')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 4')->where('GWA', '<', '89'));
-                                            $SuggestedSections[0] =  ceil($pilots / 50);
-                                            $SuggestedSections[1] =  ceil($regs / 50);
+                                            $SuggestedSections[0] = ceil($pilots / 50);
+                                            $SuggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 4')) }}</td>
@@ -325,7 +327,7 @@
                                         <td>{{ $SuggestedSections[0] }}</td>
                                         <td>{{ $SuggestedSections[1] }}</td>
                                     </tr>
-                                    
+
                                 </table>
                                 <table class="table table-resposive table-bordered">
                                     <thead class="table-dark">
@@ -367,7 +369,7 @@
                         </div>
                         <div id="grade5" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                            <table class="table table-striped">
+                                <table class="table table-striped">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th>No. of Students</th>
@@ -377,14 +379,14 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 5')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 5')->where('GWA', '<', '89'));
-                                            $SuggestedSections[0] =  ceil($pilots / 50);
-                                            $SuggestedSections[1] =  ceil($regs / 50);
+                                            $SuggestedSections[0] = ceil($pilots / 50);
+                                            $SuggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 5')) }}</td>
@@ -393,7 +395,7 @@
                                         <td>{{ $SuggestedSections[0] }}</td>
                                         <td>{{ $SuggestedSections[1] }}</td>
                                     </tr>
-                                    
+
                                 </table>
                                 <table class="table table-resposive table-bordered">
                                     <thead class="table-dark">
@@ -435,7 +437,7 @@
                         </div>
                         <div id="grade6" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                            <table class="table table-striped">
+                                <table class="table table-striped">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th>No. of Students</th>
@@ -445,14 +447,14 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 6')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 6')->where('GWA', '<', '89'));
-                                            $SuggestedSections[0] =  ceil($pilots / 50);
-                                            $SuggestedSections[1] =  ceil($regs / 50);
+                                            $SuggestedSections[0] = ceil($pilots / 50);
+                                            $SuggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 6')) }}</td>
@@ -461,7 +463,7 @@
                                         <td>{{ $SuggestedSections[0] }}</td>
                                         <td>{{ $SuggestedSections[1] }}</td>
                                     </tr>
-                                    
+
                                 </table>
                                 <table class="table table-resposive table-bordered">
                                     <thead class="table-dark">
@@ -500,9 +502,7 @@
             </div>
         </div>
     </div>
-@include('modals.deleteSectioning')
-@include('modals.editSectioning')
-@include('modals.viewSectioning')
+   
     {{-- Add Section --}}
     <div class="modal" id="add">
         <div class="modal-dialog">
@@ -609,5 +609,28 @@
             </div>
         </div>
     </div>
-    @endsection
-    
+
+    @if (session()->has('addsecSuccess'))
+        <div class="modal" id="addSuccess">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body d-flex flex-column">
+                        <p class="mx-auto">{{ session()->get('addsecSuccess') }}</p>
+                        <button data-bs-dismiss="modal" class="btn btn-primary">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="addsuccessBtn" data-bs-toggle="modal" data-bs-target="#addSuccess" hidden></button>
+
+        <script>
+            document.querySelector('#addsuccessBtn').click();
+        </script>
+    @endif
+
+    @include('sectioning.viewSectionBtn')
+    @include('sectioning.editSectionBtn')
+    @include('sectioning.deleteSectionBtn')
+    @include('sectioning.SectionizeBtn')
+    @include('sectioning.addSectionBtn')
+@endsection

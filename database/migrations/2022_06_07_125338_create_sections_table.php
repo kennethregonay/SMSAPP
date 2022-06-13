@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->enum('type',['Pilot','Regular'])->nullable();
             $table->string('name')->nullable();
-            $table->string('glevel')->nullable();
+            $table->enum('glevel', ['Kindergarten', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6']);
             $table->foreignId('users_id')
             ->constrained()
             ->onDelete('cascade')
