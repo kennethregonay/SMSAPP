@@ -8,9 +8,9 @@
                 <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add" id="addBtn"><span
                 class="fa fa-plus"></span>Add Section
                 </a>
-                {{-- <a class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#sectionLearners" id="sectionLearnersBtn">
+                 <a class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#sectionLearners" id="sectionLearnersBtn">
                     Section Learners
-                </a> --}}
+                </a> 
             </div>
 
             <div class="card-body">
@@ -41,11 +41,9 @@
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Kindergarten')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Kindergarten')->where('GWA', '<', '89'));
-
                                             $SuggestedSections[0] =  ceil($pilots / 50);
                                             $SuggestedSections[1] =  ceil($regs / 50);
                                             
-
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Kindergarten')) }}</td>
                                         <td>{{ $pilots }}</td>
@@ -114,11 +112,9 @@
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 1')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 1')->where('GWA', '<', '89'));
-
                                             $SuggestedSections[0] =  ceil($pilots / 50);
                                             $SuggestedSections[1] =  ceil($regs / 50);
                                             
-
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 1')) }}</td>
                                         <td>{{ $pilots }}</td>
@@ -147,7 +143,7 @@
                                                     <td>30</td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                            data-bs-target="#viewSection{{ $section->id }}">view</button>
+                                                            data-bs-target="#viewSection{{ $section->id }}">View</button>
                                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $section->id }}">Edit</button>
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -184,11 +180,9 @@
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 2')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 2')->where('GWA', '<', '89'));
-
                                             $SuggestedSections[0] =  ceil($pilots / 50);
                                             $SuggestedSections[1] =  ceil($regs / 50);
                                             
-
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 2')) }}</td>
                                         <td>{{ $pilots }}</td>
@@ -254,11 +248,9 @@
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 3')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 3')->where('GWA', '<', '89'));
-
                                             $SuggestedSections[0] =  ceil($pilots / 50);
                                             $SuggestedSections[1] =  ceil($regs / 50);
                                             
-
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 3')) }}</td>
                                         <td>{{ $pilots }}</td>
@@ -323,11 +315,9 @@
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 4')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 4')->where('GWA', '<', '89'));
-
                                             $SuggestedSections[0] =  ceil($pilots / 50);
                                             $SuggestedSections[1] =  ceil($regs / 50);
                                             
-
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 4')) }}</td>
                                         <td>{{ $pilots }}</td>
@@ -393,11 +383,9 @@
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 5')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 5')->where('GWA', '<', '89'));
-
                                             $SuggestedSections[0] =  ceil($pilots / 50);
                                             $SuggestedSections[1] =  ceil($regs / 50);
                                             
-
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 5')) }}</td>
                                         <td>{{ $pilots }}</td>
@@ -463,11 +451,9 @@
                                             $SuggestedSections = [0, 0];
                                             $pilots = count($learners->where('glevel', '=', 'Grade 6')->where('GWA', '>=', '89'));
                                             $regs = count($learners->where('glevel', '=', 'Grade 6')->where('GWA', '<', '89'));
-
                                             $SuggestedSections[0] =  ceil($pilots / 50);
                                             $SuggestedSections[1] =  ceil($regs / 50);
                                             
-
                                         @endphp
                                         <td>{{ count($learners->where('glevel', '=', 'Grade 6')) }}</td>
                                         <td>{{ $pilots }}</td>
@@ -623,5 +609,5 @@
             </div>
         </div>
     </div>
+    @endsection
     
-@endsection
