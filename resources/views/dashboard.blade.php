@@ -14,7 +14,7 @@
                             <h4 class="text-primary card-title"><strong>PRE-REGISTERED STUDENT:</strong><br></h4>
                         </div>
                         @php
-                            $incStudent = $learners->where('EnrollmentStatus', '=', 'Incomplete')->count();
+                            $incStudent = $learners->where('EnrollmentStatus', '=', 'Pre-Registered')->count();
                         @endphp
                         <div class="card-body">
                             <h5 class="card-subtitle mb-2">{{ $incStudent }}</h5>
@@ -27,7 +27,7 @@
                             <h4 class="text-primary card-title"><strong>REGISTERED STUDENT:</strong><br></h4>
                         </div>
                         @php
-                            $cStudent = $learners->where('EnrollmentStatus', '=', 'Enrolled')->count();
+                            $cStudent = $learners->where('EnrollmentStatus', '=', 'Registered')->count();
                         @endphp
                         <div class="card-body">
                             <h5 class="card-subtitle mb-2">{{ $cStudent }}</h5>

@@ -12,7 +12,12 @@
                                 <h6 class="text-primary card-title mt-1mt-1"><strong>Number of Learners: </strong> </h6>
                             </div>
                             <div class="card-body p-2">
-                                <h6 class="card-subtitle mt-1mt-1"> {{ count(Auth()->user()->section->learners) }}</h6>
+                                @if (count(Auth()->user()->section->learners) == null)
+                                <h6 class="card-subtitle mt-1mt-1">0</h6>
+                                @else
+                                    <h6 class="card-subtitle mt-1mt-1"> {{ count(Auth()->user()->section->learners) }}</h6>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -65,13 +70,15 @@
                                     </thead>
                                     <tbody>
                                         @php
-                                            $i = 1
+                                            $i = 1;
                                         @endphp
                                         @foreach (Auth()->user()->section->learners as $learner)
                                             <tr>
-                                                <td>{{ $i++ }}.) {{ $learner->fname }} {{ $learner->mname }} {{ $learner->lname }}</td>
+                                                <td>{{ $i++ }}.) {{ $learner->fname }} {{ $learner->mname }}
+                                                    {{ $learner->lname }}</td>
                                                 <td style="text-align: center;">{{ $learner->gender }}</td>
-                                                <td style="text-align: center;">{{ Auth()->user()->section->glevel }} | {{ Auth()->user()->section->name }}</td>
+                                                <td style="text-align: center;">{{ Auth()->user()->section->glevel }} |
+                                                    {{ Auth()->user()->section->name }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

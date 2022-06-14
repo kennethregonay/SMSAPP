@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
         <div class="container">
 
             @guest
@@ -23,9 +23,9 @@
                 </div>
                 {{-- Index Navbar --}}
                 <ul class="nav navbar-nav narbar-right">
-                    <li><a href="#login" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal" id="loginBtn"><span
+                    <li><a href="#login" class="btn btn-light mx-2 rounded-pill" data-bs-toggle="modal" id="loginBtn"><span
                                 class="fa fa-sign-in me-2"></span>Login</a></li>
-                    <li><a href="#signup" class="btn btn-primary mx-2 rounded-pill" data-bs-toggle="modal"><span
+                    <li><a href="#signup" class="btn btn-dark mx-2 rounded-pill" data-bs-toggle="modal"><span
                                 class="fa fa-user me-2"></span>Signup</a></li>
                 </ul>
             @else
@@ -36,7 +36,7 @@
                 {{-- Dashboard Navbar --}}
                 <ul class="nav navbar-nav me-auto">
                     @if (Auth()->user()->type == 'Principal')
-                        <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link">Dashboard</a>
+                        <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link"><strong>Dashboard</strong></a>
                         </li>
                         <li class="nav-item"><a href="{{ url('section') }}" class="nav-link">Sectioning</a>
                         </li>
