@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Learner;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MasterlistController extends Controller
 {
     //  
     public function index (){
-        $learners = Learner::all();
-        return view('masterlist', ['learners' => $learners]);
+        // $users = User::all();
+        return view('masterlist');
     }
 
 }

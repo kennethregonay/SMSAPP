@@ -74,7 +74,7 @@
                             {{ Auth()->user()->name }} | {{ Auth()->user()->type }}
                         </a>
                         <ul class="dropdown-menu" style="width: 100%">
-                            <li class="dropdown-item"><a href="#" class="text-decoration-none text-black">Profile</a>
+                            <li class="dropdown-item"><a href="#viewProfile" data-bs-toggle="modal" data-bs-target="#viewProfile" class="text-decoration-none text-black">Profile</a>
                             </li>
                             <li class="dropdown-item">
                                 <a href="{{ url('user/logout') }}" class="text-decoration-none text-black">Logout</a>
@@ -193,7 +193,6 @@
         </div>
     </div>
 
-    {{-- @include('modals.viewProfie') --}}
     <script>
         function changefunc(value) {
             if (value == "Principal") {
@@ -209,6 +208,7 @@
             document.getElementById('loginBtn').click();
         </script>
     @endif
+    @include('modals.viewProfie')
 </body>
 
 

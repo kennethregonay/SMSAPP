@@ -5,6 +5,7 @@
         <h3 class="mt-3">Dashboard</h3>
         <hr style="height: 4px;color: rgb(0,0,0);">
         {{-- Dashboard for Principal --}}
+        {{-- @dd(Auth()->user()) --}}
         @if (Auth()->user()->type == 'Principal')
             <div class="row">
                 <div class="col-sm-4">
