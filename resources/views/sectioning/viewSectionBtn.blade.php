@@ -1,5 +1,5 @@
-@foreach ($sections as $section )
-    <div class="modal" id="viewSection{{ $section->id }}">
+@foreach ($advisers as $adviser )
+    <div class="modal" id="viewSection{{ $adviser->section->id }}">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -11,7 +11,7 @@
                         @csrf
                         <div class="mb-2">
                             <label for="sectionName">Section Name</label>
-                            <input type="text" class="form-control" id="sectionName" value = "{{ $section->name }}" name="sectionName"
+                            <input type="text" class="form-control" id="sectionName" value = "{{ $adviser->section->name }}" name="sectionName"
                                 placeholder="Enter Section Name" readonly>
                             @error('sectionName')
                                 <p class="text-danger" style="font-size: .8rem;">{{ $message }}</p>
@@ -20,7 +20,7 @@
                         <div class="mb-2">
                             <label for="gradeLevel">Grade Level</label>
                             <select name="gradeLevel" id="gradeLevel" class="form-control" disabled >
-                                <option selected value="">"{{ $section->glevel }}"</option>
+                                <option selected value="">{{ $adviser->section->glevel }}</option>
                                 <option value="Kindergarten">Kindergarten</option>
                                 <option value="Grade 1">Grade 1</option>
                                 <option value="Grade 2">Grade 2</option>
@@ -36,8 +36,8 @@
 
                         <div class="mb-2">
                             <label for="classType">Class Type</label>
-                            <select name="classType" id="classType" class="form-control">
-                                <option selected value="">{{ $section->type }}</option>
+                            <select name="classType" id="classType" class="form-control" disabled>
+                                <option selected value="">{{ $adviser->section->type }}</option>
                                 <option value="Pilot">Pilot Class</option>
                                 <option value="Regular">Regular Class</option>
                             </select>
@@ -48,11 +48,8 @@
 
                         <div class="mb-2">
                             <label for="adviser">Adviser</label>
-                            <select name="adviser" id="adviser" class="form-control">
-                                <option selected value="">{{ $section->adviser->name }}</option>
-                                @foreach ($teachers as $teacher)
-                                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
-                                @endforeach
+                            <select name="adviser" id="adviser" class="form-control" disabled>
+                                <option selected value="">{{$adviser->name }}</option>
                             </select>
                             @error('adviser')
                                 <p class="text-danger" style="font-size: .8rem;">{{ $message }}</p>

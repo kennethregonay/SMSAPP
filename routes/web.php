@@ -76,14 +76,6 @@ Route::post('noticeboard/create', [AnnouncementController::class, 'create']);
 Route::post('noticeboard/delete', [AnnouncementController::class, 'delete']);
 Route::post('noticeboard/update', [AnnouncementController::class, 'update']);
 
-// Sectioning Functionalities
-
- Route::get('section', [SectioningController::class,'index']);
-// Route::post('section/create',[SectioningController::class, 'create'] );
- // Route::post('section/update',[SectioningController::class, 'update'] );
-// Route::post('section/delete',[SectioningController::class, 'delete'] );
-// Route::get('section/learners',[SectioningController::class, 'sectionLearners'] );
-
 // Masterlist View Functionalities
 Route::get('masterlist',[MasterlistController::class, 'index']);
 
@@ -93,5 +85,10 @@ Route::post('registration/accept',[RegistrationListController::class, 'approveLe
 Route::post('registration/decline',[RegistrationListController::class, 'declineLearners']);
 
 
-// For Debug & Practice
-Route::get('section/debug', [DebugController::class, 'index']);
+
+// Sectioning Functionalities
+Route::get('section', [DebugController::class, 'index']);
+Route::post('section/create',[DebugController::class, 'create'] );
+Route::post('section/update',[DebugController::class, 'update'] );
+Route::post('section/delete',[DebugController::class, 'delete'] );
+Route::get('section/learners',[DebugController::class, 'sectionize'] );

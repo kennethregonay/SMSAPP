@@ -26,7 +26,11 @@ return new class extends Migration
             $table->enum('role',['Brigada Coordinator', 'Enrollment Officer', 'LIS Coordinator'])->nullable();
             $table->enum('type',['Teacher', 'Principal']);
             $table->enum('status',['Pending', 'Active', 'Deactivated'])->default('Pending');
-            $table->string('educattain')->nullable();           
+            $table->string('educattain')->nullable();
+            $table->foreignId('sections_id')
+            ->nullable()
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }
