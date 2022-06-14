@@ -131,7 +131,7 @@ class DebugController extends Controller
     $categoryStudent = $this->categorizeLearners($types, $learners);
     
     $this->assignStudents($categorySection, $categoryStudent);
-    dd($categorySection, $categoryStudent);
+    return back ();
     }
 
 
@@ -185,8 +185,6 @@ class DebugController extends Controller
 
             }
         }
-
-        dd($sectionedStudents);
     }
 
 

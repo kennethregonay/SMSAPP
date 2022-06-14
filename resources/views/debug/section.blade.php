@@ -68,7 +68,7 @@
                                             $pilot = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '>=', '89')); // Number of Learners Qualified for Pilot Sections
                                             $regs = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '<', '89')); // Number of Learners Qualified for Regular Sections
                                             $suggestedSections[0] = ceil($pilot / 50); // ceil function is used to round up to the nearest integer
-                                            $suggestedSections[1] = ceil($pilot / 50);
+                                            $suggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         {{-- Display of the Content of the Table Head --}}
@@ -147,7 +147,7 @@
                                             $pilot = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '>=', '89')); // Number of Learners Qualified for Pilot Sections
                                             $regs = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '<', '89')); // Number of Learners Qualified for Regular Sections
                                             $suggestedSections[0] = ceil($pilot / 50); // ceil function is used to round up to the nearest integer
-                                            $suggestedSections[1] = ceil($pilot / 50);
+                                            $suggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         {{-- Display of the Content of the Table Head --}}
@@ -229,7 +229,7 @@
                                             $pilot = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '>=', '89')); // Number of Learners Qualified for Pilot Sections
                                             $regs = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '<', '89')); // Number of Learners Qualified for Regular Sections
                                             $suggestedSections[0] = ceil($pilot / 50); // ceil function is used to round up to the nearest integer
-                                            $suggestedSections[1] = ceil($pilot / 50);
+                                            $suggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         {{-- Display of the Content of the Table Head --}}
@@ -312,7 +312,7 @@
                                             $pilot = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '>=', '89')); // Number of Learners Qualified for Pilot Sections
                                             $regs = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '<', '89')); // Number of Learners Qualified for Regular Sections
                                             $suggestedSections[0] = ceil($pilot / 50); // ceil function is used to round up to the nearest integer
-                                            $suggestedSections[1] = ceil($pilot / 50);
+                                            $suggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         {{-- Display of the Content of the Table Head --}}
@@ -395,7 +395,7 @@
                                             $pilot = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '>=', '89')); // Number of Learners Qualified for Pilot Sections
                                             $regs = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '<', '89')); // Number of Learners Qualified for Regular Sections
                                             $suggestedSections[0] = ceil($pilot / 50); // ceil function is used to round up to the nearest integer
-                                            $suggestedSections[1] = ceil($pilot / 50);
+                                            $suggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         {{-- Display of the Content of the Table Head --}}
@@ -478,7 +478,7 @@
                                             $pilot = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '>=', '89')); // Number of Learners Qualified for Pilot Sections
                                             $regs = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '<', '89')); // Number of Learners Qualified for Regular Sections
                                             $suggestedSections[0] = ceil($pilot / 50); // ceil function is used to round up to the nearest integer
-                                            $suggestedSections[1] = ceil($pilot / 50);
+                                            $suggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         {{-- Display of the Content of the Table Head --}}
@@ -561,7 +561,7 @@
                                             $pilot = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '>=', '89')); // Number of Learners Qualified for Pilot Sections
                                             $regs = count($learners->where('glevel', '=', strval($glevel))->where('GWA', '<', '89')); // Number of Learners Qualified for Regular Sections
                                             $suggestedSections[0] = ceil($pilot / 50); // ceil function is used to round up to the nearest integer
-                                            $suggestedSections[1] = ceil($pilot / 50);
+                                            $suggestedSections[1] = ceil($regs / 50);
                                             
                                         @endphp
                                         {{-- Display of the Content of the Table Head --}}

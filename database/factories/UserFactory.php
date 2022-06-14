@@ -17,7 +17,15 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        
+        return [
+            'name' => $this->faker->name(),
+            'gender' => $this->faker->randomElement(['Male', 'Female']),
+            'email' => $this->faker->unique()->safeEmail(),
+            'password' => $this->faker->randomElement(['password']),
+            'type' => $this->faker->randomElement(['Teacher']),
+            'status' => $this->faker->randomElement(['Active']),
+    
+        ];
     }
 
     /**

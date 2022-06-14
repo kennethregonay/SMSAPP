@@ -9,7 +9,7 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-header p-2">
-                                <h6 class="text-primary card-title mt-1mt-1"><strong>Number of Learners:</strong> </h6>
+                                <h6 class="text-primary card-title mt-1mt-1"><strong>Number of Learners: </strong> </h6>
                             </div>
                             <div class="card-body p-2">
                                 <h6 class="card-subtitle mt-1mt-1">30</h6>
