@@ -1,6 +1,6 @@
 @if (Auth()->user() != null)
     <div class="modal" id="viewProfile">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title">Profile</h2>
@@ -8,12 +8,62 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-2">
-                        <label>Fullname</label>
-                        <input type="text" value="{{ Auth()->user()->name }}" readonly>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-header p-2">
+                                    <h6 class="text-primary card-title mt-1mt-1"><strong>Full Name: </strong> </h6>
+                                </div>
+                                <div class="card-body p-2">
+                                    <h6 class="card-subtitle mt-1mt-1">{{ Auth()->user()->name }}</h6>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card-header p-2">
+                                    <h6 class="text-primary card-title mt-1mt-1"><strong>Gender: </strong> </h6>
+                                </div>
+                                <div class="card-body p-2">
+                                    <h6 class="card-subtitle mt-1mt-1">{{ Auth()->user()->gender }}</h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-2">
-                        <label>Gender</label>
-                        <input type="text" value="{{ Auth()->user()->gender }}" readonly>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-header p-2">
+                                    <h6 class="text-primary card-title mt-1mt-1"><strong>Contact Number: </strong> </h6>
+                                </div>
+                                <div class="card-body p-2">
+                                    @if (Auth()->user()->contactNo != null)
+                                        <h6 class="card-subtitle mt-1mt-1">{{ Auth()->user()->contactNo }}</h6>
+                                    @else
+                                    <h6 class="card-subtitle mt-1mt-1">N/A</h6>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card-header p-2">
+                                    <h6 class="text-primary card-title mt-1mt-1"><strong>Position: </strong> </h6>
+                                </div>
+                                <div class="card-body p-2">
+                                    <h6 class="card-subtitle mt-1mt-1">{{ Auth()->user()->position }}</h6>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card-header p-2">
+                                    <h6 class="text-primary card-title mt-1mt-1"><strong>Educational Attainment:
+                                        </strong> </h6>
+                                </div>
+                                <div class="card-body p-2">
+                                    @if (Auth()->user()->educattain != null)
+                                        <h6 class="card-subtitle mt-1mt-1">{{ Auth()->user()->educattain }}</h6>
+                                    @else
+                                        <h6 class="card-subtitle mt-1mt-1">N/A</h6>
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-2">
                         <label>Contact Number</label>
