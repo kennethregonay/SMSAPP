@@ -11,11 +11,37 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
+<style>
+    .navbar {
+        background-color: rgb(32, 149, 203);
+    }
+
+    #bgIndex {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.5;
+    }
+
+    li.nav-item {
+        transition: 0.3s;
+    }
+
+    li.nav-item:hover {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    @guest
+        <img id="bgIndex"src="{{ asset('img/background.jpg') }}">
+    @else
+    <img id="bgIndex"src="{{ asset('img/bg.jpg') }}">
+    @endguest
+    <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
-
             @guest
                 <div class="navbar-header">
                     <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="width: 50px;">
@@ -23,8 +49,8 @@
                 </div>
                 {{-- Index Navbar --}}
                 <ul class="nav navbar-nav narbar-right">
-                    <li><a href="#login" class="btn btn-light mx-2 rounded-pill" data-bs-toggle="modal" id="loginBtn"><span
-                                class="fa fa-sign-in me-2"></span>Login</a></li>
+                    <li><a href="#login" class="btn btn-light mx-2 rounded-pill" data-bs-toggle="modal"
+                            id="loginBtn"><span class="fa fa-sign-in me-2"></span>Login</a></li>
                     <li><a href="#signup" class="btn btn-dark mx-2 rounded-pill" data-bs-toggle="modal"><span
                                 class="fa fa-user me-2"></span>Signup</a></li>
                 </ul>
@@ -36,7 +62,8 @@
                 {{-- Dashboard Navbar --}}
                 <ul class="nav navbar-nav me-auto">
                     @if (Auth()->user()->type == 'Principal')
-                        <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link"><strong>Dashboard</strong></a>
+                        <li class="nav-item"><a href="{{ url('dashboard') }}"
+                                class="nav-link"><strong>Dashboard</strong></a>
                         </li>
                         <li class="nav-item"><a href="{{ url('section') }}" class="nav-link">Sectioning</a>
                         </li>
@@ -44,7 +71,8 @@
                                 Board</a></li>
                         <li class="nav-item">
                         <li class="dropdown nav-item">
-                            <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">Account Management</a>
+                            <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">Account
+                                Management</a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-item"><a href="{{ url('account') }}"
                                         class="text-decoration-none text-black">Account List</a>
@@ -58,13 +86,16 @@
                     @else
                         <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link">Dashboard</a>
                         </li>
+                        @if (Auth()->user()->role)
+                        @endif
                         <li class="nav-item"><a href="{{ url('masterlist') }}" class="nav-link">Master
-                            List</a></li>
+                                List</a></li>
                         @if (Auth()->user()->role == 'Brigada Coordinator')
                             <li class="nav-item"><a href="{{ url('brigada') }}" class="nav-link">Brigada</a>
                             </li>
                         @elseif(Auth()->user()->role == 'Enrollment Officer')
-                            <li class="nav-item"><a href="{{ url('registrationManage') }}" class="nav-link">Register Management</a></li>
+                            <li class="nav-item"><a href="{{ url('registrationManage') }}" class="nav-link">Register
+                                    Management</a></li>
                         @endif
                     @endif
                 </ul>
@@ -74,7 +105,8 @@
                             {{ Auth()->user()->name }} | {{ Auth()->user()->type }}
                         </a>
                         <ul class="dropdown-menu" style="width: 100%">
-                            <li class="dropdown-item"><a href="#viewProfile" data-bs-toggle="modal" data-bs-target="#viewProfile" class="text-decoration-none text-black">Profile</a>
+                            <li class="dropdown-item"><a href="#viewProfile" data-bs-toggle="modal"
+                                    data-bs-target="#viewProfile" class="text-decoration-none text-black">Profile</a>
                             </li>
                             <li class="dropdown-item">
                                 <a href="{{ url('user/logout') }}" class="text-decoration-none text-black">Logout</a>
@@ -208,7 +240,7 @@
             document.getElementById('loginBtn').click();
         </script>
     @endif
-    @include('modals.viewProfie')
+    @include('modals.viewProfile')
 </body>
 
 

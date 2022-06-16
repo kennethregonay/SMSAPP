@@ -52,10 +52,10 @@
         @endif
         <div class="row">
             <div class="col-sm-7">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped" style="background: rgb(255, 255, 255)">
                     <thead>
                         <tr>
-                            <th colspan="3" style="text-align: center;">Announcements</th>
+                            <th colspan="3" style="text-align: center; background: rgb(255, 255, 255)">Announcements</th>
                         </tr>
                         <tr style="background: rgb(209, 209, 209)">
                             <th style="width: 30%; text-align: center;">Title</th>
@@ -77,10 +77,10 @@
             <div class="col-sm-5">
 
                 @if (Auth()->user()->type == 'Principal')
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-striped" style="background: rgb(255, 255, 255)">
                         <thead>
                             <tr>
-                                <th colspan="4" style="text-align: center">Pending Request</th>
+                                <th colspan="4" style="text-align: center; background: rgb(255, 255, 255)">Pending Request</th>
                             </tr>
                             <tr style="background: rgb(209, 209, 209)">
                                 <th style="text-align: center;">TYPE</th>
@@ -103,10 +103,10 @@
                     </table>
                 @elseif (Auth()->user()->type != 'Principal')
                     @if (Auth()->user()->role == 'Brigada Coordinator')
-                        <table class="table table-bordered table-striped table-hover">
+                        <table class="table table-bordered table-striped" style="background: rgb(255, 255, 255)">
                             <thead>
                                 <tr>
-                                    <th colspan="4" style="text-align: center">Brigada Donations</th>
+                                    <th colspan="4" style="text-align: center; background: rgb(255, 255, 255)">Brigada Donations</th>
                                 </tr>
                                 <tr style="background: rgb(209, 209, 209)">
                                     <th style="text-align: center;">NAME</th>
@@ -131,10 +131,10 @@
                         @php
                             $prereg = $learners->where('EnrollmentStatus', '=', 'Pre-Registered');
                         @endphp
-                        <table class="table table-bordered table-striped table-hover">
+                        <table class="table table-bordered table-striped" style="background: rgb(255, 255, 255)">
                             <thead>
                                 <tr>
-                                    <th colspan="4" style="text-align: center">Pre-Registered Learners</th>
+                                    <th colspan="4" style="text-align: center;background: rgb(255, 255, 255)">Pre-Registered Learners</th>
                                 </tr>
                                 <tr style="background: rgb(209, 209, 209)">
                                     <th style="text-align: center;">NAME</th>

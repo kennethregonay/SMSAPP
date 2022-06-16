@@ -47,10 +47,9 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="mb-2">
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" name="date" value="{{ $item->date }}>
+                            <input type="date" class="form-control" id="date" name="date" value="{{ $item->date }}">
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
