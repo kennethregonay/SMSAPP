@@ -71,7 +71,7 @@ class UserController extends Controller
 
     public function showAccount()
     {
-        $accounts = User::whereNot('status', '=', 'Pending')->get();
+        $accounts = User::whereNot('status', '=', 'Pending')->paginate(15);
         return view('account', ['accounts' => $accounts]);
     }
 
@@ -97,7 +97,7 @@ class UserController extends Controller
 
     public function showRequest()
     {
-        $accounts = User::where('status', '=', 'Pending')->get();
+        $accounts = User::where('status', '=', 'Pending')->paginate(15);
         return view('request')->with('accounts', $accounts);
     }
 

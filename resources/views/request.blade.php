@@ -44,6 +44,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{-- For Pagination --}}
+                {{  $accounts->links() }}
             </div>
         </div>
     </div>
