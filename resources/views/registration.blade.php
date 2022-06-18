@@ -15,7 +15,7 @@
                     <div class="card-header">
                         <a class="btn" data-bs-toggle="collapse" href="#studentInfo"
                             style="font-size: 24px;font-weight: bold">
-                            <strong>Student Information </strong><span class="fa fa-caret-down"></span>
+                            <strong>Student Information </strong><span class="fa fa-caret-down text-primary"></span>
                         </a>
                     </div>
                     <div id="studentInfo" class="collapse hidden" data-bs-parent="#accordion">
@@ -201,7 +201,7 @@
                     <div class="card-header">
                         <a class="btn" data-bs-toggle="collapse" href="#gradeInfo"
                             style="font-size: 24px;font-weight: bold">
-                            <strong>Grade Level and School Information </strong><span class="fa fa-caret-down"></span>
+                            <strong>Grade Level and School Information </strong><span class="fa fa-caret-down text-primary"></span>
                         </a>
                     </div>
                     <div id="gradeInfo" class="collapse hidden" data-bs-parent="#accordion">
@@ -288,7 +288,7 @@
                     <div class="card-header">
                         <a class="btn" data-bs-toggle="collapse" href="#parentInfo"
                             style="font-size: 24px;font-weight: bold">
-                            <strong>Parent Information </strong><span class="fa fa-caret-down"></span>
+                            <strong>Parent Information </strong><span class="fa fa-caret-down text-primary"></span>
                         </a>
                     </div>
                     <div id="parentInfo" class="collapse hidden" data-bs-parent="#accordion">

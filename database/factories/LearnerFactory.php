@@ -26,7 +26,7 @@ class LearnerFactory extends Factory
             'religion' => 'Catholic',
             'mothertongue' => 'Bicol',
             'address' => $this->faker->address(),
-            'EnrollmentStatus' => 'Pre-Registered',
+            'EnrollmentStatus' => $this->faker->randomElement(['Pre-Registered','Registered']),
             'GWA' => $this->faker->randomElement(['81','91']),
             'refNo' => $this->faker->randomNumber(8, true),
             'guardians_id' => 1,
