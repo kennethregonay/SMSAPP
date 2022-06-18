@@ -86,10 +86,13 @@
                     @else
                         <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link">Dashboard</a>
                         </li>
-                        @if (Auth()->user()->role)
-                        @endif
-                        <li class="nav-item"><a href="{{ url('masterlist') }}" class="nav-link">Master
+                        @if (Auth()->user()->section == null)
+                        <li class="disabled"><a href="{{ url('masterlist') }}" class="nav-link">Master
+                            List</a></li>
+                        @elseif (count(Auth()->user()->section->learners))
+                        <li  class="nav-item"><a href="{{ url('masterlist') }}" class="nav-link">Master
                                 List</a></li>
+                        @endif
                         @if (Auth()->user()->role == 'Brigada Coordinator')
                             <li class="nav-item"><a href="{{ url('brigada') }}" class="nav-link">Brigada</a>
                             </li>

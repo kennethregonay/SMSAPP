@@ -11,7 +11,7 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-primary card-title"><strong>PRE-REGISTERED STUDENT:</strong><br></h4>
+                            <h6 class="text-primary card-title mt-1mt-1"><strong>PRE-REGISTERED STUDENT:</strong><br></h6>
                         </div>
                         @php
                             $incStudent = $learners->where('EnrollmentStatus', '=', 'Pre-Registered')->count();
@@ -24,7 +24,7 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-primary card-title"><strong>REGISTERED STUDENT:</strong><br></h4>
+                            <h6 class="text-primary card-title mt-1mt-1"><strong>REGISTERED STUDENT:</strong><br></h6>
                         </div>
                         @php
                             $cStudent = $learners->where('EnrollmentStatus', '=', 'Registered')->count();
@@ -37,13 +37,43 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-primary card-title"><strong>TEACHER:</strong><br></h4>
+                            <h6 class="text-primary card-title mt-1mt-1"><strong>TEACHER:</strong><br></h6>
                         </div>
                         @php
                             $usercount = $users->where('type', '!=', 'Principal')->count();
                         @endphp
                         <div class="card-body">
                             <h5 class="card-subtitle mb-2">{{ $usercount }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="height: 4px;color: rgb(0,0,0);">
+        @elseif (Auth()->user()->role == 'Enrollment Officer')
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="text-primary card-title mt-1mt-1"><strong>PRE-REGISTERED STUDENT:</strong><br></h6>
+                        </div>
+                        @php
+                            $incStudent = $learners->where('EnrollmentStatus', '=', 'Pre-Registered')->count();
+                        @endphp
+                        <div class="card-body">
+                            <h5 class="card-subtitle mb-2">{{ $incStudent }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="text-primary card-title mt-1mt-1"><strong>REGISTERED STUDENT:</strong><br></h6>
+                        </div>
+                        @php
+                            $cStudent = $learners->where('EnrollmentStatus', '=', 'Registered')->count();
+                        @endphp
+                        <div class="card-body">
+                            <h5 class="card-subtitle mb-2">{{ $cStudent }}</h5>
                         </div>
                     </div>
                 </div>
@@ -64,7 +94,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($announcements as $announce)
+                        @foreach ($announcements->slice(0, 7) as $announce)
                             <tr>
                                 <td>{{ $announce->title }}</td>
                                 <td>{{ $announce->desc }}</td>
@@ -80,7 +110,8 @@
                     <table class="table table-bordered table-striped" style="background: rgb(255, 255, 255)">
                         <thead>
                             <tr>
-                                <th colspan="4" style="text-align: center; background: rgb(255, 255, 255)">Pending Request</th>
+                                <th colspan="4" style="text-align: center; background: rgb(255, 255, 255)">Pending
+                                    Request</th>
                             </tr>
                             <tr style="background: rgb(209, 209, 209)">
                                 <th style="text-align: center;">TYPE</th>
@@ -92,7 +123,7 @@
                             @php
                                 $pendingReq = $users->where('status', '=', 'Pending');
                             @endphp
-                            @foreach ($pendingReq as $pending)
+                            @foreach ($pendingReq->slice(0, 7) as $pending)
                                 <tr>
                                     <td style="text-align: center;">{{ $pending->name }}</td>
                                     <td style="text-align: center;">{{ $pending->email }}</td>
@@ -106,7 +137,8 @@
                         <table class="table table-bordered table-striped" style="background: rgb(255, 255, 255)">
                             <thead>
                                 <tr>
-                                    <th colspan="4" style="text-align: center; background: rgb(255, 255, 255)">Brigada Donations</th>
+                                    <th colspan="4" style="text-align: center; background: rgb(255, 255, 255)">Brigada
+                                        Donations</th>
                                 </tr>
                                 <tr style="background: rgb(209, 209, 209)">
                                     <th style="text-align: center;">NAME</th>
@@ -134,7 +166,8 @@
                         <table class="table table-bordered table-striped" style="background: rgb(255, 255, 255)">
                             <thead>
                                 <tr>
-                                    <th colspan="4" style="text-align: center;background: rgb(255, 255, 255)">Pre-Registered Learners</th>
+                                    <th colspan="4" style="text-align: center;background: rgb(255, 255, 255)">
+                                        Pre-Registered Learners</th>
                                 </tr>
                                 <tr style="background: rgb(209, 209, 209)">
                                     <th style="text-align: center;">NAME</th>
@@ -146,9 +179,10 @@
                                 @php
                                     $items = $brigadas->where('status', '=', 'Pending');
                                 @endphp
-                                @foreach ($prereg as $student)
+                                @foreach ($prereg->slice(0, 7) as $student)
                                     <tr>
-                                        <td style="text-align: center;">{{ $student->fname }} {{ $student->mname }} {{ $student->lname }}</td>
+                                        <td style="text-align: center;">{{ $student->fname }} {{ $student->mname }}
+                                            {{ $student->lname }}</td>
                                         <td style="text-align: center;">{{ $student->GWA }}</td>
                                         <td style="text-align: center;">{{ $student->EnrollmentStatus }}</td>
                                     </tr>

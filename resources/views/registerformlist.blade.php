@@ -7,19 +7,19 @@
             <div class="card-body">
                 <table class="table table-resposive table-bordered">
                     <thead>
-                        <tr>
-                            <th hidden style="text-align: center;">ID</th>
-                            <th style="text-align: center;">REFERENCE NO.</th>
-                            <th style="text-align: center;">NAME</th>
-                            <th style="text-align: center;">ENROLLING GRADE LEVEL</th>
-                            <th style="text-align: center;">GWA</th>
-                            <th style="text-align: center;">STATUS</th>
-                            <th style="text-align: center;">ACTION</th>
+                        <tr style="text-align: center;">
+                            <th hidden>ID</th>
+                            <th>REFERENCE NO.</th>
+                            <th>NAME</th>
+                            <th>ENROLLING GRADE LEVEL</th>
+                            <th>GWA</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($learners as $student)
-                            <tr></tr>
+                            <tr style="text-align: center;">
                                 <td hidden>{{ $student->id }}</td>
                                 <td>{{ $student->RefNo }}</td>
                                 <td>{{ $student->fname }} {{ $student->mname }} {{ $student->lname }}</td>
@@ -36,6 +36,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $learners->links() }}
             </div>
         </div>
     </div>

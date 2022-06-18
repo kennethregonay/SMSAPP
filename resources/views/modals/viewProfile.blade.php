@@ -6,7 +6,8 @@
                     <h2 class="modal-title">Profile</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="">
+                <form action="{{ url('user/profile') }}" method="POST">
+                    @csrf
                     <div class="modal-body">
                         <div class="mb-2">
                             <div class="row">
@@ -62,6 +63,11 @@
                                         @php
                                             $pos = Auth()->user()->position;
                                         @endphp
+                                        @if (Auth()->user()->type == 'Principal')
+                                        <select id="position" name="position" class="form-control form-select">
+                                            <option selected value="Principal">Principal</option>
+                                        </select>
+                                        @else
                                         <select id="position" name="position" class="form-control form-select">
                                             <option selected hidden></option>
                                             <option value="Teacher I" {{ $pos === 'Teacher I' ? 'selected' : '' }}>
@@ -80,6 +86,7 @@
                                                 {{ $pos === 'Master Teacher III' ? 'selected' : '' }}>Master Teacher
                                                 III</option>
                                         </select>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col">
@@ -94,8 +101,8 @@
                                         @else
                                             <input name="educAttain" id="educAttain" type="text" placeholder="N/A">
                                         @endif
-
                                     </div>
+                                    <input type="number" name="id" value="{{ Auth()->user()->id }}" hidden>
                                 </div>
                             </div>
                         </div>

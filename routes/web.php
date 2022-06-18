@@ -13,6 +13,7 @@ use App\Http\Controllers\SectioningController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DebugController;
 use App\Http\Controllers\RegistrationListController;
+use App\Http\Controllers\SearchController;
 use App\Models\Brigada;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -49,6 +50,8 @@ Route::post('principal/create', [UserController::class, 'adminCreation']);
 Route::post('user/create', [UserController::class, 'create']);
 Route::post('user/login', [UserController::class, 'login'])->name('login');
 Route::get('user/logout', [UserController::class, 'logout']);
+Route::post('user/profile', [UserController::class, 'updateProfile']);
+
 
 // Registration Functionalities
 Route::get('registration', [RegisterController::class,'index']);
@@ -84,11 +87,15 @@ Route::get('registrationManage',[RegistrationListController::class, 'index']);
 Route::post('registration/accept',[RegistrationListController::class, 'approveLearners']);
 Route::post('registration/decline',[RegistrationListController::class, 'declineLearners']);
 
-
-
 // Sectioning Functionalities
 Route::get('section', [DebugController::class, 'index']);
 Route::post('section/create',[DebugController::class, 'create'] );
 Route::post('section/update',[DebugController::class, 'update'] );
 Route::post('section/delete',[DebugController::class, 'delete'] );
 Route::get('section/learners',[DebugController::class, 'sectionize'] );
+
+//  Search for the different view Functionalities && Sort
+
+Route::get('search/account',[ SearchController::class, 'searchAccount']);
+
+

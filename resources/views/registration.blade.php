@@ -105,8 +105,8 @@
                                     <div class="col"><label class="form-label"
                                             style="margin-bottom: 10px;"><strong>General Weigthed
                                                 Average</strong><br></label>
-                                        <input class="form-control" type="text" name="gwa" min="60" max="100"
-                                            placeholder="60-100">
+                                        <input class="form-control" type="text" name="gwa" maxlength="3" minlength="2" min="60" max="100"
+                                            placeholder="60-100" required>
                                     </div>
 
                                     {{-- LRN Number --}}

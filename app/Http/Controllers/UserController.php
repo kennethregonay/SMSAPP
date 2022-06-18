@@ -145,4 +145,25 @@ class UserController extends Controller
 
 
     }
+
+    public function updateProfile (){
+
+        $info = Request()->validate([
+            'name'   => 'required',
+            'gender' => 'required',
+            'educAttain' => 'required',
+            'contactNo' => 'nullable',
+            'position' =>  'required',
+            'id' => 'required',
+        ]);
+        $user = User::find($info['id']);
+        $user['name'] = $info['name'];
+        $user['gender'] = $info['gender'];
+        $user['educattain'] = $info['educAttain'];
+        $user['contactNo'] = $info['contactNo'];
+        $user['position'] = $info['position'];
+        $user->save();
+
+        return back();
+    }
 }

@@ -8,10 +8,9 @@
         <div class="card">
             <div class="card-header">
                 {{-- Search Functionality --}}
-                <form action="" method="GET">
-                    {{-- {{ route('search')  }} --}}
+                <form action="{{ url('search/account') }}" method="GET">
                     @csrf
-                    <input type="text" placeholder="Search.." name="search" class="position-relative " {{-- value="{{ Request('search')   }}" --}}
+                    <input type="text" placeholder="Search.." name="search" class="position-relative "  value="{{ Request('search') }}"
                         class="position-absolute bottom-50 end-50 d-inline"><button class="d-inline" type="submit"><i
                             class="fa fa-search"></i></button>
                 </form>

@@ -35,6 +35,7 @@ class BrigadaController extends Controller
         return back();
 }
     public function update (){
+        // dd(Request()->all());
         $request = Request()->all();
         $inputs = Request()->validate([
             'name' => 'required',
@@ -43,6 +44,7 @@ class BrigadaController extends Controller
             'quantity' => 'nullable',
             'amount' => 'nullable',
             'date' => 'required',
+            'num' => 'required'
         ]);
         $id = $request['num'];
         $record = Brigada::find($id);
@@ -51,7 +53,6 @@ class BrigadaController extends Controller
         $record['donateType'] = $inputs['donateType'];
         $record['donation'] = $inputs['donation'];
         $record['quantity'] = $inputs['quantity'];
-        $record[''] = $inputs['quantity'];
         $record['amount'] = $inputs['amount'];
         $record['date'] = $inputs['date'];
         $record->save();

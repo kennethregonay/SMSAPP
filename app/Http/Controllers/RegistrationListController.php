@@ -14,7 +14,7 @@ class RegistrationListController extends Controller
      */
     public function index()
     {
-       $learners =  Learner::where('EnrollmentStatus', '=', 'Pre-Registered')->paginate(15);
+       $learners =  Learner::where('EnrollmentStatus', '=', 'Pre-Registered')->paginate(10);
        return view ('registerformlist', ['learners' => $learners]);
     }
 

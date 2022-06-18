@@ -20,8 +20,8 @@
                                 <div class="col">
                                     <label for="name">Type of Donation</label>
                                     <select class="form-select" style="margin-bottom: 20px;" name="donateType">
-                                        <option selected hidden></option>
-                                        <option value="Monetary" selected="">Monetary</option>
+                                        <option selected value ="{{ $item->donateType }}">{{ $item->donateType }}</option>
+                                        <option value="Monetary">Monetary</option>  
                                         <option value="In Kind">In Kind</option>
                                     </select>
                                 </div>

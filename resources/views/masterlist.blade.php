@@ -75,13 +75,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @dd(Auth()->user()->section->learners)
-                                        @foreach (Auth()->user()->section->learners as $learner)
+                                        @foreach ($learners as $learner)
                                             <tr>
-                                                <td>{{ $i++ }}.) {{ $learner->fname }} {{ $learner->mname }}
+                                                      <td>{{ $learner->fname }} {{ $learner->mname }}
                                                     {{ $learner->lname }}</td>
                                                 <td style="text-align: center;">{{ $learner->gender }}</td>
                                                 <td style="text-align: center;">{{ Auth()->user()->section->glevel }} |
@@ -90,6 +86,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $learners->links() }}
                             </div>
                         </div>
                     </div>
