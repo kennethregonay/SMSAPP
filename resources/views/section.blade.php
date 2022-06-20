@@ -13,8 +13,6 @@
                     Section Learners
                 </a>
             </div>
-
-
             <div class="card-body">
                 <div id="accordion">
                     <div class="card">
@@ -24,7 +22,7 @@
                                 <h3 class="p-3 mb-0">Kindergarten</h3>
                             </a>
                         </div>
-                        <div id="kinder" class="collapse show" data-bs-parent="#accordion">
+                        <div id="kinder" class="collapse hidden" data-bs-parent="#accordion">
                             <div class="card-body">
                                 <!-- student statistics -->
                                 <table class="table table-striped">
@@ -37,7 +35,6 @@
                                             <th>Suggested No of Regular Sections</th>
                                         </tr>
                                     </thead>
-
                                     <tr>
                                         @php
                                             $SuggestedSections = [0, 0];
@@ -55,8 +52,6 @@
                                     </tr>
 
                                 </table>
-
-
                                 <!-- list of sections -->
                                 <table class="table table-resposive table-bordered">
                                     <thead class="table-dark">
@@ -68,35 +63,37 @@
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
-                                        @foreach ($sections as $section)
-                                            @if ($section->glevel == 'Kindergarten')
-                                                <tr>
-                                                    <td>{{ $section->name ? $section->name : '' }} |
-                                                        {{ $section->type ? $section->type : '' }}</td>
-                                                    <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
-                                                    <td>{{ count($section->learners) }}</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                            data-bs-target="#viewSection{{ $section->id }}">view</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                                            data-bs-target="#updateSection{{ $section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
+                                    @foreach ($sections as $section)
+                                        @if ($section->glevel == 'Kindergarten')
+                                            <tr>
+                                                <td>{{ $section->name ? $section->name : '' }} |
+                                                    {{ $section->type ? $section->type : '' }}</td>
+                                                <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
+                                                <td>{{ count($section->learners) }}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#viewSection{{ $section->id }}">view</button>
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        data-bs-target="#updateSection{{ $section->id }}">Edit</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#grade1">
                                 <h3 class="p-3 mb-0">Grade 1</h3>
                             </a>
                         </div>
-                        <div id="grade1" class="collapse" data-bs-parent="#accordion">
+                        <div id="grade1" class="collapse hidden" data-bs-parent="#accordion">
                             <div class="card-body">
                                 <table class="table table-striped">
                                     <thead class="bg-dark text-white">
@@ -144,9 +141,11 @@
                                                     <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
                                                     <td>30</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $section->id }}">Edit</button>
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
@@ -158,6 +157,8 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#grade2">
@@ -212,11 +213,14 @@
                                                     <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
                                                     <td>30</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $section->id }}">view</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -226,6 +230,8 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#grade3">
@@ -280,11 +286,14 @@
                                                     <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
                                                     <td>30</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $section->id }}">view</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
                                                 </tr>
                                             @endif
@@ -293,6 +302,9 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="card">
+
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#grade4">
@@ -347,11 +359,14 @@
                                                     <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
                                                     <td>30</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $section->id }}">view</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -361,6 +376,8 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#grade5">
@@ -415,11 +432,14 @@
                                                     <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
                                                     <td>30</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $section->id }}">view</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -429,6 +449,8 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#grade6">
@@ -483,11 +505,14 @@
                                                     <td>{{ $section->users_id ? $section->adviser->name : '' }}</td>
                                                     <td>30</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $section->id }}">view</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -502,7 +527,8 @@
             </div>
         </div>
     </div>
-   
+    </div>
+
     {{-- Add Section --}}
     <div class="modal" id="add">
         <div class="modal-dialog">

@@ -14,13 +14,7 @@
                 {{-- Create Section Modal Functionalities --}}
                 @include('sectioning.addSectionBtn')
                 {{-- Create Section Buttons --}}
-                @if (count($sections->where('glevel', '=', 'Grade 6')) >= 1
-                && count($sections->where('glevel', '=', 'Grade 5')) >= 1 
-                && count($sections->where('glevel', '=', 'Grade 4')) >= 1 
-                && count($sections->where('glevel', '=', 'Grade 3')) >= 1 
-                && count($sections->where('glevel', '=', 'Grade 2')) >= 1
-                && count($sections->where('glevel', '=', 'Grade 1')) >= 1
-                && count($sections->where('glevel', '=', 'Kindergarten')) >= 1 )
+                @if (count($sections->where('glevel', '=', 'Grade 6')) >= 1 && count($sections->where('glevel', '=', 'Grade 5')) >= 1 && count($sections->where('glevel', '=', 'Grade 4')) >= 1 && count($sections->where('glevel', '=', 'Grade 3')) >= 1 && count($sections->where('glevel', '=', 'Grade 2')) >= 1 && count($sections->where('glevel', '=', 'Grade 1')) >= 1 && count($sections->where('glevel', '=', 'Kindergarten')) >= 1)
                     <button class="btn btn-warning ms-auto" data-bs-toggle="modal" data-bs-target="#sectionLearners"
                         id="sectionLearnersBtn">
                         Section Learners
@@ -35,16 +29,15 @@
                 {{-- Sectionize Modal Functionalities --}}
                 @include('sectioning.SectionizeBtn')
             </div>
- {{-- Kinder Accordion --}}
+            {{-- Kinder Accordion --}}
             <div class="card-body">
                 <div class="accordion">
-                    <br>
                     <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#kinder">
                                 {{-- Header of the Accordion --}}
-                                <h4 class="p-3 mb-0">Kindergarten</h4>
+                                <h4 class="p-3 mb-0">Kindergarten <i class="fa fa-caret-down text-primary"></i></h4>
                             </a>
                         </div>
                         <div id="kinder" class="collapse show" data-bs-parent="#accordion">
@@ -99,9 +92,11 @@
                                                     <td>{{ $adviser->name ? $adviser->name : '' }}</td>
                                                     <td>{{ count($adviser->section->learners) }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $adviser->section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $adviser->section->id }}">Edit</button>
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $adviser->section->id }}">Delete</button>
@@ -114,19 +109,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-{{-- Grade 1 Accordion--}}
-                <div class="accordion">
-                    <br>
+                {{-- Grade 1 Accordion --}}
                     <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#g1">
                                 {{-- Header of the Accordion --}}
-                                <h4 class="p-3 mb-0">Grade 1 </h4>
+                                <h4 class="p-3 mb-0">Grade 1 <i class="fa fa-caret-down text-primary"></i></h4>
                             </a>
                         </div>
-                        <div id="g1" class="collapse show" data-bs-parent="#accordion">
+                        <div id="g1" class="collapse " data-bs-parent="#accordion">
                             {{-- Kindergarten Statistics --}}
                             <div class="card-body">
                                 <table class="table table-striped">
@@ -173,14 +165,18 @@
                                         @foreach ($advisers as $adviser)
                                             @if ($adviser->section->glevel == 'Grade 1')
                                                 <tr>
-                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }} </td>
-                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }} </td>
+                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }}
+                                                    </td>
+                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }}
+                                                    </td>
                                                     <td>{{ $adviser->name ? $adviser->name : '' }}</td>
                                                     <td>{{ count($adviser->section->learners) }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $adviser->section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $adviser->section->id }}">Edit</button>
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $adviser->section->id }}">Delete</button>
@@ -193,22 +189,22 @@
                             </div>
                         </div>
 
- 
+
 
                     </div>
                 </div>
-{{-- Grade 2 Accordion--}}
+                {{-- Grade 2 Accordion --}}
                 <div class="accordion">
-                    <br>
+                    
                     <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#g2">
                                 {{-- Header of the Accordion --}}
-                                <h4 class="p-3 mb-0">Grade 2</h4>
+                                <h4 class="p-3 mb-0">Grade 2 <i class="fa fa-caret-down text-primary"></i></h4>
                             </a>
                         </div>
-                        <div id="g2" class="collapse show" data-bs-parent="#accordion">
+                        <div id="g2" class="collapse " data-bs-parent="#accordion">
                             {{-- Kindergarten Statistics --}}
                             <div class="card-body">
                                 <table class="table table-striped">
@@ -255,16 +251,21 @@
                                         @foreach ($advisers as $adviser)
                                             @if ($adviser->section->glevel == 'Grade 2')
                                                 <tr>
-                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }} </td>
-                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }} </td>
+                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }}
+                                                    </td>
+                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }}
+                                                    </td>
                                                     <td>{{ $adviser->name ? $adviser->name : '' }}</td>
                                                     <td>{{ count($adviser->section->learners) }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $adviser->section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $adviser->section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $adviser->section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -277,21 +278,21 @@
 
 
 
- 
+
                     </div>
                 </div>
-{{-- Grade 3 Accordion--}}
+                {{-- Grade 3 Accordion --}}
                 <div class="accordion">
-                    <br>
+                    
                     <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#g3">
                                 {{-- Header of the Accordion --}}
-                                <h4 class="p-3 mb-0">Grade 3</h4>
+                                <h4 class="p-3 mb-0">Grade 3 <i class="fa fa-caret-down text-primary"></i></h4>
                             </a>
                         </div>
-                        <div id="g3" class="collapse show" data-bs-parent="#accordion">
+                        <div id="g3" class="collapse " data-bs-parent="#accordion">
                             {{-- Kindergarten Statistics --}}
                             <div class="card-body">
                                 <table class="table table-striped">
@@ -338,16 +339,21 @@
                                         @foreach ($advisers as $adviser)
                                             @if ($adviser->section->glevel == 'Grade 3')
                                                 <tr>
-                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }} </td>
-                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }} </td>
+                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }}
+                                                    </td>
+                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }}
+                                                    </td>
                                                     <td>{{ $adviser->name ? $adviser->name : '' }}</td>
                                                     <td>{{ count($adviser->section->learners) }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $adviser->section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $adviser->section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $adviser->section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -360,21 +366,21 @@
 
 
 
- 
+
                     </div>
                 </div>
-{{-- Grade 4 Accordion--}}
+                {{-- Grade 4 Accordion --}}
                 <div class="accordion">
-                    <br>
+                    
                     <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#g4">
                                 {{-- Header of the Accordion --}}
-                                <h4 class="p-3 mb-0">Grade 4</h4>
+                                <h4 class="p-3 mb-0">Grade 4 <i class="fa fa-caret-down text-primary"></i></h4>
                             </a>
                         </div>
-                        <div id="g4" class="collapse show" data-bs-parent="#accordion">
+                        <div id="g4" class="collapse " data-bs-parent="#accordion">
                             {{-- Kindergarten Statistics --}}
                             <div class="card-body">
                                 <table class="table table-striped">
@@ -421,16 +427,21 @@
                                         @foreach ($advisers as $adviser)
                                             @if ($adviser->section->glevel == 'Grade 4')
                                                 <tr>
-                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }} </td>
-                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }} </td>
+                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }}
+                                                    </td>
+                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }}
+                                                    </td>
                                                     <td>{{ $adviser->name ? $adviser->name : '' }}</td>
                                                     <td>{{ count($adviser->section->learners) }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $adviser->section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $adviser->section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $adviser->section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -443,21 +454,21 @@
 
 
 
- 
+
                     </div>
                 </div>
-{{-- Grade 5 Accordion--}}
+                {{-- Grade 5 Accordion --}}
                 <div class="accordion">
-                    <br>
+                    
                     <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#g5">
                                 {{-- Header of the Accordion --}}
-                                <h4 class="p-3 mb-0">Grade 5</h4>
+                                <h4 class="p-3 mb-0">Grade 5 <i class="fa fa-caret-down text-primary"></i></h4>
                             </a>
                         </div>
-                        <div id="g5" class="collapse show" data-bs-parent="#accordion">
+                        <div id="g5" class="collapse " data-bs-parent="#accordion">
                             {{-- Kindergarten Statistics --}}
                             <div class="card-body">
                                 <table class="table table-striped">
@@ -504,16 +515,21 @@
                                         @foreach ($advisers as $adviser)
                                             @if ($adviser->section->glevel == 'Grade 5')
                                                 <tr>
-                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }} </td>
-                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }} </td>
+                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }}
+                                                    </td>
+                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }}
+                                                    </td>
                                                     <td>{{ $adviser->name ? $adviser->name : '' }}</td>
                                                     <td>{{ count($adviser->section->learners) }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $adviser->section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $adviser->section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $adviser->section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -526,21 +542,21 @@
 
 
 
- 
+
                     </div>
                 </div>
-{{-- Grade 6 Accordion--}} 
+                {{-- Grade 6 Accordion --}}
                 <div class="accordion">
-                    <br>
+                    
                     <div class="card">
                         <div class="card-header p-0">
                             <a class="text-decoration-none text-black w-100 pb-0 text-start" data-bs-toggle="collapse"
                                 href="#g6">
                                 {{-- Header of the Accordion --}}
-                                <h4 class="p-3 mb-0">Grade 6</h4>
+                                <h4 class="p-3 mb-0">Grade 6 <i class="fa fa-caret-down text-primary"></i></h4>
                             </a>
                         </div>
-                        <div id="g6" class="collapse show" data-bs-parent="#accordion">
+                        <div id="g6" class="collapse " data-bs-parent="#accordion">
                             {{-- Kindergarten Statistics --}}
                             <div class="card-body">
                                 <table class="table table-striped">
@@ -587,16 +603,21 @@
                                         @foreach ($advisers as $adviser)
                                             @if ($adviser->section->glevel == 'Grade 6')
                                                 <tr>
-                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }} </td>
-                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }} </td>
+                                                    <td>{{ $adviser->section->name ? $adviser->section->name : '' }}
+                                                    </td>
+                                                    <td>{{ $adviser->section->type ? $adviser->section->type : '' }}
+                                                    </td>
                                                     <td>{{ $adviser->name ? $adviser->name : '' }}</td>
                                                     <td>{{ count($adviser->section->learners) }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#viewSection{{ $adviser->section->id }}">View</button>
-                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-success"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateSection{{ $adviser->section->id }}">Edit</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#deleteSection{{ $adviser->section->id }}">Delete</button>
                                                     </td>
                                                 </tr>
@@ -609,10 +630,10 @@
 
 
 
- 
+
                     </div>
                 </div>
-                
+
             </div>
 
 
@@ -642,9 +663,9 @@
 
 
 
-@include('sectioning.viewSectionBtn')
-@include('sectioning.editSectionBtn')
-@include('sectioning.deleteSectionBtn') 
+            @include('sectioning.viewSectionBtn')
+            @include('sectioning.editSectionBtn')
+            @include('sectioning.deleteSectionBtn')
 
 
 
