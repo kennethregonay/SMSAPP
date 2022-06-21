@@ -40,6 +40,7 @@ class AnnouncementController extends Controller
         
         $record['title'] = $inputs['title'];
         $record['desc'] = $inputs['description'];
+        $announce['date'] = Carbon::today()->format('m-d-Y');
         $record->save();
         
         return back();   

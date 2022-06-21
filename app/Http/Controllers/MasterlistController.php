@@ -13,9 +13,14 @@ class MasterlistController extends Controller
     public function index()
     {
 
-        $learners = Learner::where('section_id', '=', Auth()->user()->section->id)->paginate(25);
-        
-        return view('masterlist') ->with('learners', $learners);
-          
+        if(Auth()->user()->section == null){
+        return redirect('dashboard')->with('success', 'You are not assign on a section yet.');
+        }else{
+            $learners = Learner::where('section_id', '=', Auth()->user()->section->id)->paginate(25);
+            return view('masterlist') ->with('learners', $learners);
+              
+        }
+
+     
     }
 }

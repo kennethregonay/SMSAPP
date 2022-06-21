@@ -10,9 +10,13 @@
                 {{-- Search Functionality --}}
                 <form action="{{ url('search/account') }}" method="GET">
                     @csrf
-                    <input type="text" placeholder="Search.." name="search" class="position-relative "  value="{{ Request('search') }}"
-                        class="position-absolute bottom-50 end-50 d-inline"><button class="d-inline" type="submit"><i
-                            class="fa fa-search"></i></button>
+                    <div>
+                        <input type="text" placeholder="Search.." name="search" class="position-relative "
+                            value="{{ Request('search') }}" autocomplete="off"
+                            class="position-absolute bottom-50 end-50 d-inline"><button class="d-inline" type="submit"><i
+                                class="fa fa-search"></i></button>
+                        <a href="{{ url('account') }}" class="btn btn-primary d-inline"><i class="fa fa-refresh"></i> Refresh</a>
+                    </div>
                 </form>
             </div>
             <div class="card-body">
@@ -37,17 +41,19 @@
                                 <td style="text-align: center;">{{ $acc->status }}</td>
                                 <td style="text-align: center;">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewAccount{{ $acc->id }}"><span
-                                            class="fa fa-eye"></span> View</button>
+                                        data-bs-target="#viewAccount{{ $acc->id }}"><span class="fa fa-eye"></span>
+                                        View</button>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#edit_account{{ $acc->id }}"><span
-                                            class="fa fa-pencil"></span> Edit</button>
+                                        data-bs-target="#edit_account{{ $acc->id }}"><span class="fa fa-pencil"></span>
+                                        Edit</button>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                @if (count($accounts) >= 15)
                     {{ $accounts->links() }}
+                @endif
             </div>
         </div>
     </div>

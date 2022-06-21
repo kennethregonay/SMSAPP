@@ -94,8 +94,18 @@ Route::post('section/update',[DebugController::class, 'update'] );
 Route::post('section/delete',[DebugController::class, 'delete'] );
 Route::get('section/learners',[DebugController::class, 'sectionize'] );
 
-//  Search for the different view Functionalities && Sort
+//  Search for the different view Functionalities
 
 Route::get('search/account',[ SearchController::class, 'searchAccount']);
+Route::get('search/request',[ SearchController::class, 'searchRequest']);
+Route::get('search/masterlist',[ SearchController::class, 'searchLearner']);
+Route::get('search/brigada',[ SearchController::class, 'searchBrigada']);
+Route::get('search/registrationlist',[ SearchController::class, 'searchRegister']);
+
+//  Sort view Functionalities 
+
+Route::get('sort/bname',[ SearchController::class, 'sort_bname']);
+Route::get('sort/bdate',[ SearchController::class, 'sort_bdate']);
+
 
 

@@ -16,14 +16,24 @@
         background-color: rgb(32, 149, 203);
     }
 
-    #bgIndex {
-        pointer-events: none;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0.5;
+    body.userBg {
+        background-image: url({{ asset('img/background.png') }});
+        min-height: 500px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
+
+    body.guestBg {
+        background-image: url({{ asset('img/bg.jpg') }});
+        min-height: 500px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
 
     li.nav-item {
         transition: 0.3s;
@@ -34,12 +44,7 @@
     }
 </style>
 
-<body>
-    @guest
-        <img id="bgIndex"src="{{ asset('img/background.jpg') }}">
-    @else
-    <img id="bgIndex"src="{{ asset('img/bg.jpg') }}">
-    @endguest
+<body class="{{ Auth::check() ? 'guestBg' : 'userBg' }}">
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
             @guest
@@ -87,11 +92,11 @@
                         <li class="nav-item"><a href="{{ url('dashboard') }}" class="nav-link">Dashboard</a>
                         </li>
                         @if (Auth()->user()->section == null)
-                        <li class="disabled"><a href="{{ url('masterlist') }}" class="nav-link">Master
-                            List</a></li>
-                        @elseif (count(Auth()->user()->section->learners))
-                        <li  class="nav-item"><a href="{{ url('masterlist') }}" class="nav-link">Master
-                                List</a></li>
+                            <li class="disabled"><a href="{{ url('masterlist') }}" class="nav-link">Master
+                                    List</a></li>
+                        @elseif (Auth()->user()->section != null)
+                            <li class="nav-item"><a href="{{ url('masterlist') }}" class="nav-link">Master
+                                    List</a></li>
                         @endif
                         @if (Auth()->user()->role == 'Brigada Coordinator')
                             <li class="nav-item"><a href="{{ url('brigada') }}" class="nav-link">Brigada</a>

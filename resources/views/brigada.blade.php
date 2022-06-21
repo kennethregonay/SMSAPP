@@ -8,27 +8,31 @@
             <div class="card-header">
                 <div class="d-inline-flex">
                     {{-- Add Donation --}}
-                    <a class="{{ btn  }}btn-primary" data-bs-toggle="modal" data-bs-target="#brigada_add"><span
-                        class="fa fa-plus"></span>Add Donation</a>
-                    {{-- <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#brigada_summary"><span
+                    
+                    <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#brigada_summary"><span
                             class="fa fa-plus"></span>Brigada Summary</a>
                     <a class="btn btn-sucess" data-bs-toggle="modal" data-bs-target="#brigada_history"><span
-                                class="fa fa-plus"></span>History | Log File </a> --}}
+                                class="fa fa-plus"></span>History | Log File </a>
                     <div>
                         {{-- Search in the Brigada --}}
-                        <form action="">
-                            <input type="text" placeholder="Search.." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                        <form class="d-flex flex-row" action="{{ url('search/brigada') }}" method="GET">
+                            @csrf
+                            <input type="text" placeholder="Search.." name="search" class="position-relative" value="{{ Request('search') }}" autocomplete="off"
+                                class="position-absolute bottom-50 end-50 d-inline"><button class="d-inline" type="submit"><i
+                                    class="fa fa-search" ></i></button>
+                                    <div class="dropdown">
+                                        {{-- Sort in the Brigada --}}
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Sort<span
+                                                class="caret" ></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a href="{{ url('sort/bname') }}" class="text-decoration-none text-black">Name</a></li>
+                                            <li class="dropdown-item"><a href="{{ url('sort/bdate') }}" class="text-decoration-none text-black">Date</a></li>
+                                        </ul>
+                                    </div>
+                                    <a class="btn btn-primary" href="{{ url('brigada') }}"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</a>
+                                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brigada_add"><span
+                                        class="fa fa-plus"></span>Add Donation</a>    
                         </form>
-                    </div>
-                    {{-- Sort in the Brigada --}}
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">Sort<span
-                                class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="" class="text-decoration-none text-black">Name</a></li>
-                            <li class="dropdown-item"><a href="" class="text-decoration-none text-black">Date</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>

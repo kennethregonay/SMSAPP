@@ -5,11 +5,18 @@
         <hr style="height: 4px;color: rgb(0,0,0);">
         <form action="{{ route('register') }}" method="POST">
             @csrf
-            <p style="color: red"><strong>REMINDER: REMEMBER/SAVE THIS REFERENCE NUMBER!!!</strong></p>
-            <label for="ref_no" class="form-label"><strong>REFERENCE NUMBER: </strong></label>
-            <input class="mb-5" type="number" name='ref_no' value="{{ $ref_no }}" readonly>
+            <div class="card">
+                <div class="card-header">
+                    <p style="color: red"><strong>REMINDER: REMEMBER/SAVE THIS REFERENCE NUMBER!!!</strong></p>
+                    <p style="color: red"><strong>REMINDER: ASTERISK (*) MEANS IT IS REQUIRED</strong></p>
+                </div>
+                <div class="card-body">
+                    <label for="ref_no" class="form-label"><strong>REFERENCE NUMBER: </strong></label>
+                    <input type="number" name='ref_no' value="{{ $ref_no }}" readonly>
+                </div>
+            </div>
+            <hr style="width: 0%">
             {{-- Grade Level --}}
-
             <div id="accordion">
                 <div class="card">
                     <div class="card-header">
@@ -18,13 +25,13 @@
                             <strong>Student Information </strong><span class="fa fa-caret-down text-primary"></span>
                         </a>
                     </div>
-                    <div id="studentInfo" class="collapse hidden" data-bs-parent="#accordion">
+                    <div id="studentInfo" class="collapse show" data-bs-parent="#accordion">
                         <div class="form-group mb-3">
                             <div class="card-body">
                                 {{-- Learner Type --}}
                                 <div class="row">
                                     <div class="col"><label class="form-label"
-                                            style="margin-bottom: 10px;"><strong>Learner
+                                            style="margin-bottom: 10px;"><strong>*Learner
                                                 Type</strong><br></label>
                                         <div class="row" style="width: 240px;">
                                             <div class="col">
@@ -105,8 +112,8 @@
                                     <div class="col"><label class="form-label"
                                             style="margin-bottom: 10px;"><strong>General Weigthed
                                                 Average</strong><br></label>
-                                        <input class="form-control" type="text" name="gwa" maxlength="3" minlength="2" min="60" max="100"
-                                            placeholder="60-100" required>
+                                        <input class="form-control" type="text" name="gwa" maxlength="3"
+                                            minlength="2" min="60" max="100" placeholder="60-100" required>
                                     </div>
 
                                     {{-- LRN Number --}}
@@ -150,8 +157,8 @@
                                     {{-- Nationality and Religion --}}
                                     <div class="col"><label class="form-label"
                                             style="margin-bottom: 10px;"><strong>Nationality</strong><br></label><input
-                                            class="form-control" type="text" name="national" style="margin-bottom: 20px;"
-                                            maxlength="20">
+                                            class="form-control" type="text" name="national"
+                                            style="margin-bottom: 20px;" maxlength="20">
                                     </div>
                                     <div class="col"><label class="form-label"
                                             style="margin-bottom: 10px;"><strong>Relgion</strong><br></label><select
@@ -179,7 +186,8 @@
                                         <div class="form-group mb-3"><label class="form-label"
                                                 style="margin-bottom: 10px;"><strong>Email
                                                     Address</strong><br></label><input class="form-control" type="text"
-                                                style="margin-bottom: 20px;" placeholder="example@email.com" name="email">
+                                                style="margin-bottom: 20px;" placeholder="example@email.com"
+                                                name="email">
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +195,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group mb-3"><label class="form-label"
-                                                style="margin-bottom: 10px;"><strong>If there is a disability please specify
+                                                style="margin-bottom: 10px;"><strong>If there is a disability please
+                                                    specify
                                                     if not leave it as is</strong><br></label>
                                             <textarea class="form-control" name="PWD">N/A</textarea>
                                         </div>
@@ -201,10 +210,11 @@
                     <div class="card-header">
                         <a class="btn" data-bs-toggle="collapse" href="#gradeInfo"
                             style="font-size: 24px;font-weight: bold">
-                            <strong>Grade Level and School Information </strong><span class="fa fa-caret-down text-primary"></span>
+                            <strong>Grade Level and School Information </strong><span
+                                class="fa fa-caret-down text-primary"></span>
                         </a>
                     </div>
-                    <div id="gradeInfo" class="collapse hidden" data-bs-parent="#accordion">
+                    <div id="gradeInfo" class="collapse show" data-bs-parent="#accordion">
                         <div class="card-body">
                             <div class="row">
                                 {{-- School Information --}}
@@ -291,7 +301,7 @@
                             <strong>Parent Information </strong><span class="fa fa-caret-down text-primary"></span>
                         </a>
                     </div>
-                    <div id="parentInfo" class="collapse hidden" data-bs-parent="#accordion">
+                    <div id="parentInfo" class="collapse show" data-bs-parent="#accordion">
                         <div class="card-body">
                             <div>
                                 <div class="row">
@@ -357,7 +367,8 @@
                                         <div class="form-group mb-3"><label class="form-label"
                                                 style="margin-bottom: 10px;"><strong>Contact
                                                     Number</strong><br></label></div><input class="form-control"
-                                            type="tel" style="margin: 0px;margin-top: -16px;" name="parents_contact" placeholder="09XXXXXXXXX">
+                                            type="tel" style="margin: 0px;margin-top: -16px;" name="parents_contact"
+                                            placeholder="09XXXXXXXXX">
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-3"><label class="form-label"
@@ -368,13 +379,14 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group mb-3"><label class="form-label"
-                                                style="margin-bottom: 10px;"><strong>Educational Attainment</strong><br></label>
-                                            <select class="form-control form-select" style="margin-bottom: 20px;" name="parents_educ-attain"
-                                                id="parents_educ-attain">
+                                                style="margin-bottom: 10px;"><strong>Educational
+                                                    Attainment</strong><br></label>
+                                            <select class="form-control form-select" style="margin-bottom: 20px;"
+                                                name="parents_educ-attain" id="parents_educ-attain">
                                                 <option selected hidden></option>
-                                                <option value="Elementary Graduate">Elementary Graduate</option> 
-                                                <option value="Highschool Graduate">Highschool Graduate</option> 
-                                                <option value="College Graduate">College Graduate</option> 
+                                                <option value="Elementary Graduate">Elementary Graduate</option>
+                                                <option value="Highschool Graduate">Highschool Graduate</option>
+                                                <option value="College Graduate">College Graduate</option>
                                             </select>
                                         </div>
                                     </div>

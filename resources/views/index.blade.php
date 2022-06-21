@@ -3,7 +3,7 @@
     <div class="row justify-content-center" style="margin-top: 10%">
         <div class="col-4">
             <div class="card text-center border border-primary border-5 rounded-5">
-                <div class="card-body rounded-5" style="width; 50%; background-color:white">
+                <div class="card-body rounded-5" style="width; 50%;">
                     <h1 style="font-weight: bold">Back to School!</h1>
                     <h4>IT'S NICE TO MEET YOU</h4>
                     <a class="btn btn-primary mx-2 rounded-pill" href="{{ url('registration') }}"

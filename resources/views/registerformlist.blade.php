@@ -4,6 +4,15 @@
         <h3 class="mt-3">Pre-Registered Form List</h3>
         <hr style="height: 4px;color: rgb(0,0,0);">
         <div class="card">
+            <div class="card-header">
+                <form action="{{ url('search/registrationlist') }}" method="GET">
+                    @csrf
+                    <input type="text" placeholder="Search.." name="search" class="position-relative "  value="{{ Request('search') }}" autocomplete="off"
+                        class="position-absolute bottom-50 end-50 d-inline"><button class="d-inline" type="submit"><i
+                            class="fa fa-search" ></i></button>
+                            <a href="{{ url('registrationManage') }}" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</a>    
+                </form>
+            </div>
             <div class="card-body">
                 <table class="table table-resposive table-bordered">
                     <thead>

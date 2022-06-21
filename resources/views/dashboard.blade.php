@@ -1,11 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <!-- <img src="{{ asset('img/avatars/avatar1.jpeg') }}" alt="" width="200px"> -->
         <h3 class="mt-3">Dashboard</h3>
         <hr style="height: 4px;color: rgb(0,0,0);">
         {{-- Dashboard for Principal --}}
-        {{-- @dd(Auth()->user()) --}}
         @if (Auth()->user()->type == 'Principal')
             <div class="row">
                 <div class="col-sm-4">
@@ -212,4 +210,17 @@
             document.querySelector('#successBtn').click();
         </script>
     @endif
+    @if (session()->has('success'))
+    <div class="modal" id="success">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex flex-column">
+                    <p class="mx-auto">{{ session()->get('success') }}</p>
+                    <button data-bs-dismiss="modal" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
 @endsection

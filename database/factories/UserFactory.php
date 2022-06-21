@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'password' => $this->faker->randomElement(['password']),
             'type' => $this->faker->randomElement(['Teacher']),
-            'status' => $this->faker->randomElement(['Active']),
+            'status' => $this->faker->randomElement(['Pending']),
     
         ];
     }
