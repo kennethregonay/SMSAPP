@@ -15,8 +15,8 @@
                         <input type="number" name="adviser_id" value = "{{ $adviser->id }}" hidden>
                         <input type="number" name="section_id" value = "{{ $adviser->section->id }}" hidden>
                         <div class="modal-footer = 2">
-                            <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
-                            <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-success" type="submit" data-bs-dismiss="modal" value ="1" name="submit" >Confirm</button>
+                            <button class="btn btn-danger" data-bs-dismiss="modal" value="0" name="submit" >Cancel</button>
                         </div>
                     </form>
                 </div>

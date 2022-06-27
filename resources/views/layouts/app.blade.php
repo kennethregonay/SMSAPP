@@ -253,3 +253,40 @@
 
 
 </html>
+
+ @if ($errors->any())
+<div class="modal" id="error">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body d-flex flex-column">
+                <p class="mx-auto">{!! implode('', $errors->all('<div>:message</div>')) !!}</p>
+                <button data-bs-dismiss="modal" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="errorBtn" data-bs-toggle="modal" data-bs-target="#error" hidden></button>
+
+<script>
+    document.querySelector('#errorBtn').click();
+</script>
+@endif
+
+@if (session()->has('success'))
+<div class="modal" id="success">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body d-flex flex-column">
+                <p class="mx-auto">{{ session()->get('success') }}</p>
+                <button data-bs-dismiss="modal" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="successBtn" data-bs-toggle="modal" data-bs-target="#success" hidden></button>
+
+<script>
+    document.querySelector('#successBtn').click();
+</script>
+@endif 
+

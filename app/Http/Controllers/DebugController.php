@@ -91,18 +91,23 @@ class DebugController extends Controller
             $sections->save();
         }
 
-        return back();
+        return back()->with('success', 'Section is successfully updated');  
     }
 
     // delete section in the database and make the teacher's foreign key to section null
     public function delete (){
         $info = Request()->all();
-        $adviser = User::find($info['adviser_id']);
-        $adviser->sections_id = null;
-        $adviser->save();
-        Section::destroy($info['section_id']);
-        return back();
-    }
+        if($info['submit'] == 1){
+            $adviser = User::find($info['adviser_id']);
+            $adviser->sections_id = null;
+            $adviser->save();
+            Section::destroy($info['section_id']);
+            return back()->with('success', 'Section is successfully deleted');  
+        }else{
+            return back();
+        }
+        }
+      
 
     // the funtionalities for the button of sectioning of learners in the section view
     public function sectionize () {
@@ -111,7 +116,7 @@ class DebugController extends Controller
  
        $types = [
         '0' => ['Kindergarten', 'Pilot', '>='],
-        '1' => ['Grade 1', 'Pilot', '>='],
+        '1' => ['Grade 1', 'Pilot', '>='],  
         '2' => ['Grade 2', 'Pilot', '>='],
         '3' => ['Grade 3', 'Pilot', '>='],
         '4' => ['Grade 4', 'Pilot', '>='],

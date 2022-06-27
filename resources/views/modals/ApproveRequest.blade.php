@@ -15,8 +15,8 @@
                             <p>Are you Sure you want to continue?</p>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
-                            <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-success" type="submit" data-bs-dismiss="modal" name="submit" value="1">Confirm</button>
+                            <button class="btn btn-danger" data-bs-dismiss="modal"  name = "submit" value= "0">Cancel</button>
                         </div>
                     </div>
                 </form>

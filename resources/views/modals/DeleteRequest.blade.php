@@ -13,8 +13,8 @@
                             <p>Are you Sure you want to continue?</p>
                             <input type="text" name="num" value="{{ $acc->id }} " hidden>
                         </div>
-                            <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
-                            <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-success" type="submit" data-bs-dismiss="modal" name="submit" value="1">Confirm</button>
+                        <button class="btn btn-danger" data-bs-dismiss="modal"  name = "submit" value= "0">Cancel</button>
                         </div>
                     </form>
                 </div>

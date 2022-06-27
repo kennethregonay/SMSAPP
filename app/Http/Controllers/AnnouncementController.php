@@ -27,7 +27,7 @@ class AnnouncementController extends Controller
         $announce['user_id'] = Auth()->user()->id;
         $announce->save();
 
-        return back();  
+        return back()->with('success', 'Announcement is Successfully Created');  
     }
     public function update (){
         $request = Request()->all();
@@ -42,17 +42,21 @@ class AnnouncementController extends Controller
         $record['desc'] = $inputs['description'];
         $announce['date'] = Carbon::today()->format('m-d-Y');
         $record->save();
-        
-        return back();   
+        return back()->with('success', 'Announcement is Successfully Updated');  
     }
 
     
     public function delete (){
+    
+        
         $request = Request()->all();
-        $id = $request['num'];
-        Announcement::destroy($id);
-        // return redirect('/noticeboard');
-        return back();
+        if($request['submit'] == 1 ){
+            $id = $request['num'];
+            Announcement::destroy($id);
+            return back()->with('success', 'Announcement is Successfully Deleted');  
+        }else{ 
+            return back();
+        }
     }
 }
     

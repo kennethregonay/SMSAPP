@@ -18,7 +18,6 @@ class UserController extends Controller
     // SIGN UP IS RUNNING
     public function create()
     {
-        dd(Request()->all());
         $request = request()->validate([
             'name' => 'required',
             'gender' => 'required',
@@ -37,7 +36,7 @@ class UserController extends Controller
         $user['type'] = $request['type'];
         $user->save();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Account Successfully Created! However is not active');
     }
     // LOGIN RUNNING
     public function login()
@@ -93,7 +92,7 @@ class UserController extends Controller
         $record['role'] = $inputs['role'];
         $record['status'] = $inputs['status'];
         $record->save();
-        return back();
+        return back()->with('success', 'The account is successfully updated.');
     }
 
     public function showRequest()
@@ -107,21 +106,30 @@ class UserController extends Controller
     {
         $request = Request()->all();
         $id = $request['num'];
-        $acc = User::find($id);
-        $acc['status'] = 'Active';
-        $acc->save();
-        return redirect('/request');
+        if ($request['submit'] == 1){
+            $acc = User::find($id);
+            $acc['status'] = 'Active';
+            $acc->save();
+            return redirect('/request')->with('success', 'The account is successfully approved.');
+        }else{
+            return back();
+        }
+        
     }
     public function DeleteRequest()
     {
         $request = Request()->all();
         $id = $request['num'];
-        $acc = User::find($id);
-        $acc['status'] = 'Deactivated';
-        $acc->save();
-        return redirect('/request');
+        if ($request['submit'] == 1){
+            $acc = User::find($id);
+            $acc['status'] = 'Deactivated';
+            $acc->save();
+            return redirect('/request')->with('success', 'The account is now disapproved ');
+     
+        }else{
+            return back();
+        }
     }
-
     public function initialize(){
         $user = DB::table('users')->where('type', '=', 'Principal')->get();
         
@@ -165,6 +173,6 @@ class UserController extends Controller
         $user['position'] = $info['position'];
         $user->save();
 
-        return back();
+        return back()->with('success', 'Profile is successfully updated');  
     }
 }

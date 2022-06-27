@@ -14,8 +14,8 @@
                     </div>
                     <input type="number" name="num" hidden value="{{ $announce->id }}">
                     <div class="modal-footer">
-                        <button class="btn btn-success" type="submit" data-bs-dismiss="modal">Confirm</button>
-                        <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-success" type="submit" data-bs-dismiss="modal" value ="1" name="submit" >Confirm</button>
+                        <button class="btn btn-danger" data-bs-dismiss="modal" value="0" name="submit" >Cancel</button>
                     </div>
                 </form>
             </div>
