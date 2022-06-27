@@ -12,7 +12,8 @@
                         <input type="number" name="num" hidden value="{{ $acc->id }}">
                         <div class="mb-2">
                             <label for="email">EMAIL</label>
-                            <input type="text" class="form-control" name="email" value="{{ $acc->email }}" readonly>
+                            <input type="text" class="form-control" name="email" value="{{ $acc->email }}"
+                                readonly>
                         </div>
 
                         <div class="mb-2">
@@ -26,11 +27,15 @@
                             <select name="role" id="role" class="form-control form-select" required>
                                 <option selected hidden></option>
                                 @if ($acc->role == 'Brigada Coordinator')
-                                <option value="Brigada Coordinator" selected>Brigada Coordinator</option>
-                                <option value="Enrollment Officer">Enrollment Officer</option>                                   
+                                    <option value="Brigada Coordinator" selected>Brigada Coordinator</option>
+                                    <option value="Enrollment Officer">Enrollment Officer</option>
+                                @elseif ($acc->role == 'Enrollment Officer')
+                                    <option value="Brigada Coordinator">Brigada Coordinator</option>
+                                    <option value="Enrollment Officer" selected>Enrollment Officer</option>
                                 @else
-                                <option value="Brigada Coordinator" >Brigada Coordinator</option>
-                                <option value="Enrollment Officer" selected >Enrollment Officer</option>  
+                                    <option value=""selected></option>
+                                    <option value="Brigada Coordinator">Brigada Coordinator</option>
+                                    <option value="Enrollment Officer">Enrollment Officer</option>
                                 @endif
                             </select>
                         </div>
@@ -45,8 +50,6 @@
                                     <option value="Active">Active</option>
                                     <option value="Deactivated" selected>Deactivated</option>
                                 @endif
-
-
                             </select>
                         </div>
 
