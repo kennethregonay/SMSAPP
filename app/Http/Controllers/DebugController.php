@@ -23,7 +23,6 @@ class DebugController extends Controller
 
     // the functionalities for the creation of sections
     public function create (){
-        
         // Validation of the inputs
         $info = Request()->validate([
         'section_name' => 'required',
@@ -45,7 +44,7 @@ class DebugController extends Controller
        $adviser = User::where ('type', '=' , 'Teacher')->where('name' , '=' , $info['adviser'])->get()->first();
        $adviser->sections_id = $sections['id'];
        $adviser->save();
-      return back();
+        return redirect('section')->with('success', 'Add Section Successfully');
     
 }   
 // the functionalities for the update of sections details and adviser

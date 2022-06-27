@@ -93,7 +93,7 @@ class RegisterController extends Controller
         $learner['national']  =  $info['l_national'];
         $learner['address']  =  $info['l_address'];
         $learner['PWD']  =  $info['PWD'];
-        $learner['EnrollmentStatus']  =  'Incomplete';
+        $learner['EnrollmentStatus']  =  'Pre-Registered';
         $learner['RefNo']  =  $info['ref_no'];
         $learner['guardians_id'] = $parent['id'];
         $learner['GWA'] = $info['gwa'];

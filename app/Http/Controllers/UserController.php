@@ -18,6 +18,7 @@ class UserController extends Controller
     // SIGN UP IS RUNNING
     public function create()
     {
+        dd(Request()->all());
         $request = request()->validate([
             'name' => 'required',
             'gender' => 'required',
