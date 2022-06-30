@@ -51,9 +51,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                @if (count($accounts) >= 15)
+                {{-- @if (count($accounts) >= 15) --}}
                     {{ $accounts->links() }}
-                @endif
+                {{-- @endif --}}
             </div>
         </div>
     </div>
