@@ -42,6 +42,7 @@
     li.nav-item:hover {
         background-color: rgb(255, 255, 255);
     }
+
 </style>
 
 <body class="{{ Auth::check() ? 'guestBg' : 'userBg' }}">

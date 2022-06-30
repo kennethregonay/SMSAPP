@@ -1,3 +1,4 @@
+
 <div class="modal" id="brigada_history">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -5,21 +6,23 @@
                 <h2 class="modal-title">Brigada Activity Log</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="max-height: 200px; overflow:auto;">
                 <table class="table table-resposive table-bordered">
                     <thead class="table-dark">
                         <tr>
-                            <th>Date and Time</th>
+                            <th>Date | Time</th>
                             <th>User</th>
                             <th>Changes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>02-21-2022 | 12:45 pm</td>
-                            <td>Cyrel Pellosis </td>
-                            <td>Added "name here"</td>
+                        @foreach ( $logs as $history )
+                            <tr>
+                            <td>{{ $history->date }} | {{ $history->time }}</td>
+                            <td>{{ $history->actor }} </td>
+                            <td>{{ $history->changes }}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

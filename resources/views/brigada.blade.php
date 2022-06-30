@@ -7,8 +7,6 @@
         <div class="card">
             <div class="card-header">
                 <div class="mb-3">
-                    <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#brigada_summary"><span
-                            class="fa fa-book"></span>Brigada Summary</a>
                     <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#brigada_history"><span
                             class="fa fa-history"></span>History | Log File </a>
                     <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brigada_add"><span

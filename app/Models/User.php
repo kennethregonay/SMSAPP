@@ -45,5 +45,10 @@ class User extends Authenticatable
     public function section (){
         return $this->hasOne(Section::class, 'id', 'sections_id');
     }
+    
+    public function logs()
+    {
+        return $this->hasMany(Log::class, 'logs_id');
+    }
 
 }
