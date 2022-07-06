@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" id="title" name="title"
                             placeholder="Enter Title">
                     </div>
-
+                    
                     <div class="mb-2">
                         <label for="description">Description</label>
                         <textarea class="form-control" id="description" name="description" placeholder="Enter Description" rows="5">

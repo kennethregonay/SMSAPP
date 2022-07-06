@@ -57,13 +57,52 @@ class RegisterController extends Controller
             'parents_email' => 'required',
             'parents_educ-attain' => 'nullable'
         ]);
-        return view ('confirmation',)->with('request' , $request);
+        return view ('confirmation')->with('request' , $request);
     }
 
     // Digdi ma save
     public function confirmation()
     {
         $info = Request()->all();
+
+        // create a validation
+
+        // $info = Request()->validate([
+        //     'ref_no' => 'required',
+        //     'school_type' => 'required',
+        //     'prev_grade' => 'required',
+        //     'prev_section' => 'required',
+        //     'school_id' => 'nullable',
+        //     'school_name' => 'required',
+        //     'prev_schoolyear' => 'required',
+        //     'school_address' => 'required',
+        //     'type' => 'required',
+        //     'glevel' => 'required',
+        //     'fname' => 'required',
+        //     'mname' => 'nullable',
+        //     'lname' => 'required',
+        //     'extension' => 'nullable',
+        //     'address' => 'required',
+        //     'gwa' => 'required',
+        //     'LRN' => 'nullable',
+        //     'birthdate' => 'required',
+        //     'mothertongue' => 'required',
+        //     'gender' => 'required',
+        //     'national' => 'required',
+        //     'religion' => 'required',
+        //     'contact' => 'required',
+        //     'email' => 'required',
+        //     'PWD' => 'nullable',
+        //     'parent_type' => 'required',
+        //     'parents_gender' => 'required',
+        //     'parents_fname' => 'required',
+        //     'parents_mname' => 'nullable',
+        //     'parents_lname' => 'required',
+        //     'parents_contact' => 'required',
+        //     'parents_email' => 'required',
+        //     'parents_educ-attain' => 'nullable'
+        // ]);
+
         $parent = new Guardian();
         $parent['type'] = $info['p_type'];
         $parent['fname'] = $info['p_fname'];

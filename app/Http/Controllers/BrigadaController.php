@@ -48,7 +48,7 @@ class BrigadaController extends Controller
         $log['time'] = Carbon::now('Hongkong')->format('h:m');
         $log['changes'] = $user . ' Added a donator ' . $brigada['name']. ' who donated '. $brigada['donation'];
         $log->save();
-        return back();
+        return back()->with( 'success','A new Donator is Successfully Added !');
     }
     public function update()
     {
@@ -84,27 +84,33 @@ class BrigadaController extends Controller
         $log['changes'] = $user . ' Updated a donator ' . $record['name'];
         $log->save();
 
-        return back();
+        return back()->with('success', 'The information is Successfully Updated');
     }
 
     public function delete()
     {
         $request = Request()->all();
-        $id = $request['num'];
-        $record = Brigada::find($id);
-        
-        $user = Auth()->user()->name;
-        $log = new Log();
-        
-        $log['actor'] = $user;
-        $log['date'] = Carbon::today()->format('m-d-Y');;
-        $log['time'] = Carbon::now('Hongkong')->format('h:m');
-        $log['changes'] = $user . ' Removed a donator ' . $record['name'];
-        $log->save();
-        
-        Brigada::destroy($id);
 
-      
-        return redirect('/brigada');
+        if($request['submit'] == 1){
+            $id = $request['num'];
+            $record = Brigada::find($id);
+            
+            $user = Auth()->user()->name;
+            $log = new Log();
+            
+            $log['actor'] = $user;
+            $log['date'] = Carbon::today()->format('m-d-Y');;
+            $log['time'] = Carbon::now('Hongkong')->format('h:m');
+            $log['changes'] = $user . ' Removed a donator ' . $record['name'];
+            $log->save();
+            
+            Brigada::destroy($id);
+    
+          
+            return redirect('/brigada')->with('success', 'The information is Successfully Updated');
+        }else{
+            return back();
+        }
+    
     }
 }

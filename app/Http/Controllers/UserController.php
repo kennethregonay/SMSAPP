@@ -150,7 +150,7 @@ class UserController extends Controller
         $user ['status'] = 'Active';
         $user->save();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'A new Principal Added!');
 
 
     }

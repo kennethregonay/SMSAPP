@@ -15,8 +15,8 @@
                            <input type="number" hidden name="num" value="{{ $item->id  }}">
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-danger" type="submit" data-bs-dismiss="modal">Confirm</button>
-                            <button class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-danger" type="submit" data-bs-dismiss="modal" name="submit"  value="1">Confirm</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" name="submit" value="0">Cancel</button>
                         </div>
                     </form>
                 </div>
